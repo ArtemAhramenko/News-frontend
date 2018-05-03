@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-news-area',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-area.component.css']
 })
 export class NewsAreaComponent implements OnInit {
-
+  @Input() articleTitle;
   constructor() { }
 
   ngOnInit() {

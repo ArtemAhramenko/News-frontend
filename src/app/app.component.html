@@ -1,8 +1,9 @@
 <router-outlet></router-outlet>
 <div class="container">
   <div class="row">
-    <app-news-area></app-news-area>
-    <app-news-area></app-news-area>
-    <app-news-area></app-news-area>
+    <app-news-area
+      *ngFor="let title of articles"
+      [articleTitle]="title"
+    ></app-news-area>
   </div>
 </div>
