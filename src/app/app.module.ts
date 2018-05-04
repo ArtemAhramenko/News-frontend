@@ -5,12 +5,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/main/header/header.component';
 
 import { NewsAreaComponent } from './components/main/news-area/news-area.component';
-import {HeaderComponent} from "./components/main/header/header.component";
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
     AppComponent,
     NewsAreaComponent,
     HeaderComponent
