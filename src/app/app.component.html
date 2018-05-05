@@ -1,9 +1,12 @@
-<router-outlet></router-outlet>
-<div class="container">
+<section class="text-center py-4">
+
+
+  <!--Grid row-->
   <div class="row">
-    <app-news-area
-      *ngFor="let title of articles"
-      [articleTitle]="title"
-    ></app-news-area>
+    <app-card
+      *ngFor="let i of articles"
+      [titles]="i"
+    ></app-card>
   </div>
-</div>
+
+</section>

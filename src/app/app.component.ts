@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   articles = [
     {text: 'Test1'},
-    {text: 'Test2'}
-  ]
+    {text: 'Test2'},
+    {text: 'Test3'}
+  ];
 }
