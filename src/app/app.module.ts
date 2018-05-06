@@ -4,14 +4,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/main/header/header.component';
 import { CardComponent } from './components/main/card/card.component';
-import { LoginFormComponent } from "./components/main/login-form/login-form.component";
+import { LoginFormComponent } from "./components/auth/login-form/login-form.component";
+import { AuthComponent } from './components/auth/auth.component';
+import { MainComponent } from './components/main/main.component';
+import { FooterComponent } from './components/main/footer/footer.component';
+import { PageHeadingComponent } from './components/main/page-heading/page-heading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CardComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AuthComponent,
+    MainComponent,
+    FooterComponent,
+    PageHeadingComponent
   ],
   imports: [
     BrowserModule,
