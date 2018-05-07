@@ -24,3 +24,9 @@ footer.page-footer {
 .navbar .btn-group .dropdown-menu a:active {
   color: #fff !important;
 }
+
+.centerLoad {
+  position: absolute;
+  margin-left: 48%;
+  margin-top: 23%;
+}
