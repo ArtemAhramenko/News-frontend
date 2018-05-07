@@ -10,6 +10,7 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/main/footer/footer.component';
 import { PageHeadingComponent } from './components/main/page-heading/page-heading.component';
 import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
+import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.c
     MainComponent,
     FooterComponent,
     PageHeadingComponent,
-    AuthFooterComponent
+    AuthFooterComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,

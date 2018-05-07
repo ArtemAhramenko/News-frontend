@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
+  registration: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 }
