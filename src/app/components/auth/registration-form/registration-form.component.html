@@ -1,29 +1,38 @@
 <app-header></app-header>
-<form class="mainForm">
+<form class="mainForm" [formGroup]="userForm">
   <p class="h4 text-center mb-4">Регистрация</p>
 
   <!-- Default input name -->
   <label for="defaultFormRegisterNameEx" class="grey-text">Логин</label>
-  <input type="text" id="defaultFormRegisterNameEx" class="form-control">
+  <input type="text"
+         id="defaultFormRegisterNameEx"
+         [(ngModel)]="user.username"
+         [ngClass]="{'error' : userForm.controls['name'].hasError('required')
+         && (userForm.controls['name'].touched || invalid ) }" class="form-control">
 
   <br>
 
   <!-- Default input email -->
   <label for="defaultFormRegisterEmailEx" class="grey-text">Ваш email</label>
-  <input type="email" id="defaultFormRegisterEmailEx" class="form-control">
+  <input type="email"
+         id="defaultFormRegisterEmailEx"
+         class="form-control"
+         [(ngModel)]="user.email"
+         [ngClass]="{'error' : (userForm.controls['email'].hasError('required') || userForm.controls['email'].hasError('email'))
+         && (userForm.controls['email'].touched || invalid ) }">
 
   <br>
 
   <!-- Default input password -->
   <label for="defaultFormRegisterPasswordEx" class="grey-text">Пароль</label>
-  <input type="password" id="defaultFormRegisterPasswordEx" class="form-control">
+  <input type="password"
+         id="defaultFormRegisterPasswordEx"
+         class="form-control"
+         [(ngModel)]="user.password"
+         [ngClass]="{'error' : userForm.controls['password'].hasError('required')
+         && (userForm.controls['password'].touched || invalid ) }">
 
   <br>
-
-  <!-- Default input second pass -->
-  <label for="defaultFormRegisterConfirmPass" class="grey-text">Подтвердите пароль</label>
-  <input type="email" id="defaultFormRegisterConfirmPass" class="form-control">
-
 
   <div class="text-center mt-4">
     <button class="btn btn-indigo" type="submit">Зарегистрироваться</button>
