@@ -11,6 +11,7 @@ import { FooterComponent } from './components/main/footer/footer.component';
 import { PageHeadingComponent } from './components/main/page-heading/page-heading.component';
 import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
+import {FormBuilder} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { RegistrationFormComponent } from './components/auth/registration-form/r
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
