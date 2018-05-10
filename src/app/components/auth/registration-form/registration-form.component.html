@@ -14,7 +14,11 @@
            [(ngModel)]="user.username"
            [ngClass]="{'error' : userForm.controls['username'].hasError('required')
            && (userForm.controls['username'].touched || invalid ) }">
+      <i *ngIf="userForm.controls['username'].hasError('required')
+     && (userForm.controls['username'].touched || invalid )"
+         class="fa fa-exclamation-triangle error-triangle showError"></i>
   </div>
+
   <br>
 
   <!-- Default input email -->
@@ -29,6 +33,9 @@
            [(ngModel)]="user.email"
            [ngClass]="{'error' : (userForm.controls['email'].hasError('required') || userForm.controls['email'].hasError('email'))
            && (userForm.controls['email'].touched || invalid ) }">
+           <i *ngIf="(userForm.controls['email'].hasError('required') || userForm.controls['email'].hasError('email'))
+           && (userForm.controls['email'].touched || invalid )"
+       class="fa fa-exclamation-triangle error-triangle"></i>
     </div>
   <br>
 
@@ -44,6 +51,9 @@
            [(ngModel)]="user.password"
            [ngClass]="{'error' : userForm.controls['password'].hasError('required')
            && (userForm.controls['password'].touched || invalid ) }">
+    <i *ngIf="userForm.controls['password'].hasError('required')
+    && (userForm.controls['password'].touched || invalid )"
+       class="fa fa-exclamation-triangle error-triangle"></i>
   </div>
   <br>
 

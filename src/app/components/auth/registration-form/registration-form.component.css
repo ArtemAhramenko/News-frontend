@@ -73,7 +73,7 @@ input::-webkit-input-placeholder {
 .error-triangle {
   position: absolute;
   color: #fe3b3b;
-  top: 35px;
+  top: 18px;
   right: 10px;
   z-index: 10;
 }
