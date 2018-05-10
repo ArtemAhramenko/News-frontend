@@ -3,39 +3,52 @@
   <p class="h4 text-center mb-4">Регистрация</p>
 
   <!-- Default input name -->
-  <label for="defaultFormRegisterNameEx" class="grey-text">Логин</label>
-  <input type="text"
-         id="defaultFormRegisterNameEx"
-         [(ngModel)]="user.username"
-         [ngClass]="{'error' : userForm.controls['name'].hasError('required')
-         && (userForm.controls['name'].touched || invalid ) }" class="form-control">
-
+  <div class="md-form">
+    <i class="fa fa-user prefix grey-text"></i>
+    <input style="font-size: 15px"
+           type="text"
+           placeholder="{{'Введите логин'}}"
+           id="username"
+           class="form-control"
+           formControlName="username"
+           [(ngModel)]="user.username"
+           [ngClass]="{'error' : userForm.controls['username'].hasError('required')
+           && (userForm.controls['username'].touched || invalid ) }">
+  </div>
   <br>
 
   <!-- Default input email -->
-  <label for="defaultFormRegisterEmailEx" class="grey-text">Ваш email</label>
-  <input type="email"
-         id="defaultFormRegisterEmailEx"
-         class="form-control"
-         [(ngModel)]="user.email"
-         [ngClass]="{'error' : (userForm.controls['email'].hasError('required') || userForm.controls['email'].hasError('email'))
-         && (userForm.controls['email'].touched || invalid ) }">
-
+  <div class="md-form">
+    <i class="fa fa-envelope prefix grey-text"></i>
+    <input style="font-size: 15px"
+           type="email"
+           placeholder="{{'Введите email'}}"
+           id="email"
+           class="form-control"
+           formControlName="email"
+           [(ngModel)]="user.email"
+           [ngClass]="{'error' : (userForm.controls['email'].hasError('required') || userForm.controls['email'].hasError('email'))
+           && (userForm.controls['email'].touched || invalid ) }">
+    </div>
   <br>
 
   <!-- Default input password -->
-  <label for="defaultFormRegisterPasswordEx" class="grey-text">Пароль</label>
-  <input type="password"
-         id="defaultFormRegisterPasswordEx"
-         class="form-control"
-         [(ngModel)]="user.password"
-         [ngClass]="{'error' : userForm.controls['password'].hasError('required')
-         && (userForm.controls['password'].touched || invalid ) }">
-
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <input style="font-size: 15px"
+           type="password"
+           placeholder="{{'Введите пароль'}}"
+           id="password"
+           class="form-control"
+           formControlName="password"
+           [(ngModel)]="user.password"
+           [ngClass]="{'error' : userForm.controls['password'].hasError('required')
+           && (userForm.controls['password'].touched || invalid ) }">
+  </div>
   <br>
 
   <div class="text-center mt-4">
-    <button class="btn btn-indigo" type="submit">Зарегистрироваться</button>
+    <button class="btn btn-indigo" (click)="register()" type="submit">Зарегистрироваться</button>
   </div>
   <h5 style="margin: 7px; text-align: center">Уже зарегистрированы? <a routerLink="/login">Войти</a></h5>
 </form>

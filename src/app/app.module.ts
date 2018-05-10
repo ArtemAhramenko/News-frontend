@@ -12,6 +12,8 @@ import { PageHeadingComponent } from './components/main/page-heading/page-headin
 import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {UserService} from "./services/user.service";
+import { HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,15 +26,17 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
     FooterComponent,
     PageHeadingComponent,
     AuthFooterComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [FormBuilder],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

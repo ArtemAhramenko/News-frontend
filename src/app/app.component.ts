@@ -6,11 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  articles = [
-    {text: 'Test1'},
-    {text: 'Test2'},
-    {text: 'Test3'},
-    {text: 'Test4'},
-    {text: 'Test5'}
-  ];
 }
