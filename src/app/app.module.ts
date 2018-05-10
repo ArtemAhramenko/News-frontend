@@ -12,6 +12,7 @@ import { PageHeadingComponent } from './components/main/page-heading/page-headin
 import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
 import {FormBuilder} from "@angular/forms";
+import { ArticleComponent } from './components/main/article/article.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormBuilder} from "@angular/forms";
     FooterComponent,
     PageHeadingComponent,
     AuthFooterComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
