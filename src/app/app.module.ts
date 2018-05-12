@@ -13,6 +13,9 @@ import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.c
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
 import {FormBuilder} from "@angular/forms";
 import { ArticleComponent } from './components/main/article/article.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ArticlesService} from './services/articles.service';
+
 
 @NgModule({
   declarations: [
@@ -30,9 +33,13 @@ import { ArticleComponent } from './components/main/article/article.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [FormBuilder],
+  providers: [
+    FormBuilder,
+    ArticlesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
