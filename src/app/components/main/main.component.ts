@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {API_URL} from '../../constants/API';
+import {Article} from '../../models/article';
 
 @Component({
   selector: 'app-main',
@@ -7,17 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  articles = [
-    {text: 'Test1'},
-    {text: 'Test2'},
-    {text: 'Test3'},
-    {text: 'Test4'},
-    {text: 'Test5'}
-  ];
+  articles: Article[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get(API_URL + '/getarticle').subscribe(
+      (news: Article[]) => { this.articles = news }
+    );
   }
-
 }
