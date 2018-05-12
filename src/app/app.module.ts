@@ -14,7 +14,6 @@ import { RegistrationFormComponent } from './components/auth/registration-form/r
 import {FormBuilder} from "@angular/forms";
 import { ArticleComponent } from './components/main/article/article.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ArticlesService} from './services/articles.service';
 
 
 @NgModule({
@@ -37,8 +36,7 @@ import {ArticlesService} from './services/articles.service';
     HttpClientModule
   ],
   providers: [
-    FormBuilder,
-    ArticlesService
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })
