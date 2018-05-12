@@ -13,8 +13,9 @@ import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.c
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
 import {FormBuilder} from "@angular/forms";
 import { ArticleComponent } from './components/main/article/article.component';
-import {HttpClientModule} from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UserService } from "./services/user.service";
+import { HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,11 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [
     FormBuilder
   ],
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

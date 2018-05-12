@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {User} from "../../../models/user";
+import {Router} from "@angular/router";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-registration-form',
@@ -7,9 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationFormComponent implements OnInit {
 
-  constructor() { }
+  userForm: FormGroup;
+  user: User = new User();
+  invalid = false;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private userService: UserService) {
+  }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.userForm = this.fb.group({
+      'username': ['', [
+        Validators.required
+      ]],
+      'email': ['', [
+        Validators.required,
+        Validators.email
+      ]],
+      'password': ['', [
+        Validators.required
+      ]]
+    })
+  }
+
+  register() {
+    this.userService.create(this.user).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['/login'])
+      }
+    );
   }
 
 }
