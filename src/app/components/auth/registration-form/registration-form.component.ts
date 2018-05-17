@@ -40,9 +40,12 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   register() {
+    if (!this.userForm.valid) {
+      this.invalid = true;
+      return;
+    }
     this.userService.create(this.user).subscribe(
       data => {
-        console.log(data);
         this.router.navigate(['/login'])
       }
     );
