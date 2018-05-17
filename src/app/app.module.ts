@@ -17,6 +17,10 @@ import { UserService } from "./services/user.service";
 import { HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./services/auth.service";
 import {JwtService} from "./services/jwt.service";
+import {ArticleService} from './services/article.service';
+import { ListComponent } from './components/main/list/list.component';
+import { CheckComponent } from './components/main/check/check.component';
+import { TagComponent } from './components/main/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import {JwtService} from "./services/jwt.service";
     PageHeadingComponent,
     AuthFooterComponent,
     RegistrationFormComponent,
-    ArticleComponent
+    ArticleComponent,
+    ListComponent,
+    CheckComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,7 @@ import {JwtService} from "./services/jwt.service";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, AuthService],
+  providers: [UserService, AuthService, ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
