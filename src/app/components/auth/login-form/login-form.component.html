@@ -1,27 +1,47 @@
-<!-- Default form login -->
-  <form class="mainForm" (formGroup)="userForm">
-    <p class="h4 text-center mb-4">Вход</p>
+<form class="mainForm" [formGroup]="userForm">
+  <p class="h4 text-center mb-4">Вход</p>
+  <!-- Default input name -->
+  <div class="md-form">
+    <i class="fa fa-user prefix grey-text"></i>
+    <input style="font-size: 15px"
+           type="text"
+           placeholder="{{'Введите логин'}}"
+           id="username"
+           class="form-control"
+           formControlName="username"
+           [(ngModel)]="user.username"
+           [ngClass]="{'error' : userForm.controls['username'].hasError('required')
+           && (userForm.controls['username'].touched || invalid ) }">
+    <i *ngIf="userForm.controls['username'].hasError('required')
+     && (userForm.controls['username'].touched || invalid )"
+       class="fa fa-exclamation-triangle error-triangle showError"></i>
+  </div>
 
-    <!-- Default input email -->
-    <label for="defaultFormLoginEmailEx" class="grey-text">Ваш email</label>
-    <input type="email" id="defaultFormLoginEmailEx" class="form-control">
+  <br>
 
-    <br>
+  <!-- Default input password -->
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <input style="font-size: 15px"
+           type="password"
+           placeholder="{{'Введите пароль'}}"
+           id="password"
+           class="form-control"
+           formControlName="password"
+           [(ngModel)]="user.password"
+           [ngClass]="{'error' : userForm.controls['password'].hasError('required')
+           && (userForm.controls['password'].touched || invalid ) }">
+    <i *ngIf="userForm.controls['password'].hasError('required')
+    && (userForm.controls['password'].touched || invalid )"
+       class="fa fa-exclamation-triangle error-triangle"></i>
+  </div>
+  <br>
 
-    <!-- Default input password -->
-    <label for="defaultFormLoginPasswordEx" class="grey-text">Пароль</label>
-    <input type="password" id="defaultFormLoginPasswordEx" class="form-control">
-
-    <div class="text-center mt-4">
-      <button class="btn btn-indigo" type="submit">Войти</button>
-      <h5 class="orBtn">или</h5>
-      <!--Facebook-->
-      <button type="button" class="btn btn-fb"><i class="fa fa-facebook"></i></button>
-      <!--Twitter-->
-      <button type="button" class="btn btn-tw"><i class="fa fa-twitter"></i></button>
-      <!--Vkontakte-->
-      <button type="button" class="btn btn-vk"><i class="fa fa-vk"></i></button>
-      <h5 style="margin: 7px">Не зарегистрированы? <a  routerLink="/registration">Регистрация</a></h5>
-    </div>
-  </form>
-<!-- Default form login -->
+  <div class="text-center mt-4">
+    <button class="btn btn-indigo" (click)="login()" type="submit">Войти</button>
+  </div>
+  <div  class="text-center mt-4">
+    <div style="margin-left: 10px; margin-bottom: 15px" id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,facebook,twitter;hidden=;redirect_uri=http%3A%2F%2F;mobilebuttons=0;callback=initAuth"></div>
+  </div>
+  <h5 style="margin: 7px; text-align: center">Не зарегистрированы? <a routerLink="/registration">Зарегистрироваться</a></h5>
+</form>

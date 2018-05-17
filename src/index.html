@@ -30,6 +30,13 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
 
 
+
+  <script src="//ulogin.ru/js/ulogin.js"></script>
+  <script>
+    function initAuth(authToken) {
+      window.authHook.next(authToken)
+    }
+  </script>
 </head>
   <body>
     <app-root>
@@ -48,4 +55,4 @@
     </div>
     </app-root>
   </body>
-</html>
+</
