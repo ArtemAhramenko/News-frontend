@@ -11,11 +11,14 @@ import { FooterComponent } from './components/main/footer/footer.component';
 import { PageHeadingComponent } from './components/main/page-heading/page-heading.component';
 import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
-import {FormBuilder} from "@angular/forms";
 import { ArticleComponent } from './components/main/article/article.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserService } from "./services/user.service";
 import { HttpClientModule} from "@angular/common/http";
+import {ArticleService} from './services/article.service';
+import { ListComponent } from './components/main/list/list.component';
+import { CheckComponent } from './components/main/check/check.component';
+import { TagComponent } from './components/main/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -29,21 +32,19 @@ import { HttpClientModule} from "@angular/common/http";
     PageHeadingComponent,
     AuthFooterComponent,
     RegistrationFormComponent,
-    ArticleComponent
+    ArticleComponent,
+    ListComponent,
+    CheckComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [
-    FormBuilder
-  ],
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

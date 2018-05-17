@@ -1,8 +1,14 @@
 body{
 
 }
-
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0px;
+  margin-left: 0px;
+}
 #news_container{
   background: black;
   margin: auto 30px;
 }
+
