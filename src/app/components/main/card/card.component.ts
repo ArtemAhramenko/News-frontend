@@ -1,4 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {Article} from '../../../models/article';
+import {ArticleService} from '../../../services/article.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +10,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() article;
-  constructor() { }
+  constructor(private articleService: ArticleService) {
+
+  }
 
   ngOnInit() {
   }

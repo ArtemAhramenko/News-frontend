@@ -4,13 +4,15 @@ export class Article {
   title: string;
   description: string;
   content: string;
-  createdAt: any;
+  createdDate: any;
   updatedAt: any;
 
 
   constructor(data) {
+    this.id = data.id;
     this.title = data.title;
     this.description = data.description;
     this.content = data.content;
+    this.createdDate = data.createdDate;
   }
 }
