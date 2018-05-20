@@ -20,7 +20,6 @@ import {ArticleService} from './services/article.service';
 import { ListComponent } from './components/main/list/list.component';
 import { CheckComponent } from './components/main/check/check.component';
 import { TagComponent } from './components/main/tag/tag.component';
-import { AuthUserHeaderComponent } from './components/main/auth-user-header/auth-user-header.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { AuthUserHeaderComponent } from './components/main/auth-user-header/auth
     ArticleComponent,
     ListComponent,
     CheckComponent,
-    TagComponent,
-    AuthUserHeaderComponent
+    TagComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,21 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userservice: UserService) { }
 
   ngOnInit() {
   }
 
   showLoginForm() {
     this.router.navigate(["login"]);
+  }
+
+  showUser() {
+    console.log("here")
+    this.userservice.me().subscribe(data => {
+      console.log("here");
+      console.log(data);
+    });
   }
 
 }

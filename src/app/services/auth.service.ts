@@ -37,13 +37,8 @@ export class AuthService {
     localStorage.setItem('token', token.token);
     let user: User = new User();
     let tokenInfo = this.getDecodedAccessToken(token.token); // decode token
-    console.log(tokenInfo);
-    console.log(tokenInfo.userId);
-    console.log(tokenInfo.roles);
     user.id = tokenInfo.userId;
     user.roles = tokenInfo.roles;
-    console.log(user.id);
-    console.log(user.roles);
   }
 
   authUser(user: User) {
