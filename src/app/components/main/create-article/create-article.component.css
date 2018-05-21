@@ -1,0 +1,12 @@
+quill-editor{
+  margin: 20px auto;
+}
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+h3{
+  margin: 20px;
+}
+button{
+  margin-top: 20px;
+}

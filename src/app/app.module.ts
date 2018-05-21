@@ -18,8 +18,9 @@ import { HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./services/auth.service";
 import {ArticleService} from './services/article.service';
 import { ListComponent } from './components/main/list/list.component';
-import { CheckComponent } from './components/main/check/check.component';
+import { CreateArticleComponent } from './components/main/create-article/create-article.component';
 import { TagComponent } from './components/main/tag/tag.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { TagComponent } from './components/main/tag/tag.component';
     RegistrationFormComponent,
     ArticleComponent,
     ListComponent,
-    CheckComponent,
+    CreateArticleComponent,
     TagComponent
   ],
   imports: [
@@ -43,6 +44,7 @@ import { TagComponent } from './components/main/tag/tag.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule,
     HttpClientModule
   ],
   providers: [UserService, AuthService, ArticleService],

@@ -2,6 +2,9 @@ import {Article} from "../models/article";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {API_URL} from "../constants/API";
 import {Injectable} from "@angular/core";
+import {ArticleCreate} from '../models/articleCreate';
+import {Observer} from 'rxjs/Observer';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ArticleService {
@@ -11,7 +14,11 @@ export class ArticleService {
   private headers: HttpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
   create(id: String) {
     let url = API_URL + '/getarticleid/'+ id;
-    return this.http.post(url, {header: this.headers});
+    return this.http.post(url, {headers: this.headers});
+  }
+  createArticle(article: ArticleCreate) : Observable<any>{
+    let url = API_URL + '/addarticle';
+    return this.http.post(url, article, {headers: this.headers});
   }
 
 }
