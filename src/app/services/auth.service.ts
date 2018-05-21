@@ -39,6 +39,9 @@ export class AuthService {
     let tokenInfo = this.getDecodedAccessToken(token.token); // decode token
     user.id = tokenInfo.userId;
     user.roles = tokenInfo.roles;
+    console.log(user.id);
+    console.log(user.roles);
+    console.log(token.token);
   }
 
   authUser(user: User) {

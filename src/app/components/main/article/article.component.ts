@@ -11,7 +11,7 @@ import {Article} from '../../../models/article';
 export class ArticleComponent implements OnInit {
   articleId: String;
   article : Article;
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(private router: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
     this.getArticleId();
@@ -20,7 +20,7 @@ export class ArticleComponent implements OnInit {
 
   }
   getArticleId(){
-    this.route.params.subscribe(
+    this.router.params.subscribe(
       (params: Params) => {
         this.articleId = params['id']
       }

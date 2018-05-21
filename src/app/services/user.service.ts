@@ -18,9 +18,10 @@ export class UserService {
     return this.http.post(API_URL + '/registration', user);
   }
 
-  me() {
+  me(user: User) {
     console.log(this.headers);
-    return this.http.get(API_URL + '/me', {headers: this.headers});
+    let url = API_URL + '/me' + user.id;
+    return this.http.get(url, {headers: this.headers});
   }
 
 

@@ -12,7 +12,7 @@ import {UserService} from "../../../services/user.service";
 export class RegistrationFormComponent implements OnInit {
 
   userForm: FormGroup;
-  user: User = new User();
+  user: User;
   invalid = false;
 
   constructor(private fb: FormBuilder,

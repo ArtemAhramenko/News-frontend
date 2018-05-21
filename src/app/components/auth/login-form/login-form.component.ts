@@ -12,7 +12,7 @@ import {AuthService} from "../../../services/auth.service";
 export class LoginFormComponent implements OnInit {
 
   userForm: FormGroup;
-  user: User = new User();
+  user: User;
   invalid = false;
 
   constructor(private fb: FormBuilder,
