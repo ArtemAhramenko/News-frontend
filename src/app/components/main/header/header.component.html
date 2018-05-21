@@ -35,24 +35,20 @@
 
 
 
-      <button type="button" (click)="showLoginForm()" class="btn btn-primary btn-sm loginBtn">Вход</button>
+      <button *ngIf="!auth" type="button" (click)="showLoginForm()" class="btn btn-primary btn-sm loginBtn">Вход</button>
 
 
 
+      <div *ngIf="auth" class="btn-group">
+        <button style="padding-top: 8px; padding-bottom: 8px" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Меню </button>
 
-
-      <div class="dropdown">
-        <button class="btn dropdownBtn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Пользователь
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" (click)="showUser()" type="button">Личный кабинет</button>
-          <button class="dropdown-item" type="button">Написать статью</button>
-          <button class="dropdown-item" type="button">Мои статьи</button>
-          <button class="dropdown-item" type="button">Выход</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="showUser()">Личный кабинет</a>
+          <a class="dropdown-item" href="#">Написать статью</a>
+          <hr>
+          <a class="dropdown-item" (click)="exit()" href="/">Выход</a>
         </div>
       </div>
-
 
 
 

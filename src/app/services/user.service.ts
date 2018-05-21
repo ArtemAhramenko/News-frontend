@@ -19,11 +19,22 @@ export class UserService {
   }
 
   me(user: User) {
-    console.log(this.headers);
-    let url = API_URL + '/me' + user.id;
+    console.log(user);
+    let url = API_URL + '/me' + '/' + user.id;
     return this.http.get(url, {headers: this.headers});
   }
 
+  saveUser(user: User) {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+  }
+
+  getCurrentUser(): User {
+    if (typeof localStorage !== 'undefined') {
+      return JSON.parse(localStorage.getItem('user'))
+    }
+  }
 
 
 }

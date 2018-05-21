@@ -67,9 +67,6 @@ input::-webkit-input-placeholder {
   font-size: 11px;
   text-align: center;
 }
-.error {
-  border: 1px solid #fe3b3b;
-}
 .error-triangle {
   position: absolute;
   color: #fe3b3b;

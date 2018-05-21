@@ -5,26 +5,30 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
 import {Observable} from "rxjs/Observable";
 import {LoginResponse} from "../models/LoginResponse";
-import {UserService} from "./user.service";
 import * as jwt_decode from "jwt-decode";
+import {UserService} from "./user.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthService {
 
+  user: User = new User();
+
   private authHook = new Subject();
 
-  constructor(private http: HttpClient, private userService: UserService) {
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) {
     window['authHook'] = this.authHook;
   }
 
   setAuthHook() {
     this.authHook.subscribe(authToken => {
-      this.sendToken(authToken).subscribe( jwtToken =>
-      this.saveToken(jwtToken))
+      this.sendToken(authToken).subscribe(jwtToken =>
+        this.saveToken(jwtToken))
     });
   }
 
-  getDecodedAccessToken(token: string): any {
+
+  static getDecodedAccessToken(token: string): any {
     try{
       return jwt_decode(token);
     }
@@ -33,19 +37,18 @@ export class AuthService {
     }
   }
 
-  saveToken(token: LoginResponse){
+  saveToken(token){
     localStorage.setItem('token', token.token);
-    let user: User = new User();
-    let tokenInfo = this.getDecodedAccessToken(token.token); // decode token
-    user.id = tokenInfo.userId;
-    user.roles = tokenInfo.roles;
-    console.log(user.id);
-    console.log(user.roles);
-    console.log(token.token);
+    let tokenInfo = AuthService.getDecodedAccessToken(token.token); // decode token
+    this.user.id = tokenInfo.userId;
+    this.user.roles = tokenInfo.roles;
+    this.userService.saveUser(this.user);
   }
 
   authUser(user: User) {
-    this.http.post(API_URL+'/auth', user).subscribe(data => {console.log(data)})
+    this.http.post(API_URL+'/auth', user).subscribe(authToken => {
+      this.saveToken(authToken);
+    })
   }
 
   sendToken(token): Observable<any>{
