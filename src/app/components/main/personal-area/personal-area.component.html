@@ -1,3 +1,48 @@
-<p>{{user.password}}</p>
-<p>{{user.username}}</p>
-<p><img src={{user.profileImg}}></p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container myChanges">
+  <div class="row">
+    <div class="panel panel-default styleWidth">
+      <div style="font-size: 24px" class="panel-heading">Профиль пользователя</div>
+      <div class="panel-body">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+          <img alt="User Pic" src={{user.profileImg}} class="img-circle img-responsive">
+          <div class="custom-file" >
+            <input  type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile" >Изменить аватар</label>
+          </div>
+
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+          <div class="container" >
+            <h2>{{user.username}}</h2>
+          </div>
+          <hr>
+          <ul class="container details" >
+            <fieldset disabled>
+              <div class="form-group">
+                <label style="font-size: 22px" for="disabledTextInput">Ваш логин:</label>
+                <input type="text" style="font-size: 20px" id="disabledTextInput" class="form-control" placeholder="{{user.username}}">
+              </div>
+            </fieldset>
+            <button type="button" class="btn btn-primary btn btnChangeUsr">Изменить логин</button>
+
+            <fieldset disabled>
+              <div class="form-group">
+                <label style="font-size: 22px" for="exampleInputPassword">Ваш пароль:</label>
+                <input type="password" style="font-size: 18px" class="form-control" id="exampleInputPassword" placeholder="{{user.password}}">
+              </div>
+            </fieldset>
+            <button type="button" class="btn btn-primary btn btnChangeUsr">Изменить пароль</button>
+          </ul>
+          <hr>
+          <div class="col-sm-12 col-xs-12" style="width: 100%; text-align: center; font-size: 18px" >Зарегистрирован в системе: .......</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+.styleWidth {
+  width: 100%;
+  text-align: center;
+}
+
+
+.rowWidth {
+  width: 120%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: inline-block;
+  text-align:center;
+}
+
+.myChanges {
+  margin-top: 1%;
+}
+
+.btnChangeUsr {
+  margin-top: -9px;
+  margin-bottom: 25px;
+}
+
+.file {
+  visibility: hidden;
+  position: absolute;
+}
