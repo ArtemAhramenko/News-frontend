@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
       this.role.name = "USER";
       this.user.roles = [this.role];
     }
-
   }
 
   showLoginForm() {
@@ -38,8 +37,10 @@ export class HeaderComponent implements OnInit {
 
   showUser() {
     console.log("call service")
-    this.userService.me(this.user).subscribe(data => {
-      this.usualRouter.navigate(["me"]);
+    this.userService.me(this.user.id).subscribe(data => {
+      this.userService.saveUserCred(data as User);
+      console.log(data);
+      this.usualRouter.navigate(["me/"+this.user.id]);
     });
   }
 

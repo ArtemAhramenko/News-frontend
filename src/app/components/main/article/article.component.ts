@@ -22,7 +22,7 @@ export class ArticleComponent implements OnInit {
   getArticleId(){
     this.router.params.subscribe(
       (params: Params) => {
-        this.articleId = params['id']
+        this.articleId = params['id'];
       }
     );
   }

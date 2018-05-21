@@ -10,7 +10,7 @@ export class User {
     banned: boolean;
     enabled: boolean;
   // token: string;
-    profileImg =  'http://res.cloudinary.com/profunding/image/upload/v1505580510/default-user-image.jpg';
+    profileImg: string;
 
   constructor() {
   }
