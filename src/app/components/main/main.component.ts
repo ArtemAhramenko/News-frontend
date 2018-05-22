@@ -14,6 +14,7 @@ import {Role} from "../../models/role";
 export class MainComponent implements OnInit {
 
   articles: Article[] = [];
+
   user: User = new User();
   role: Role = new Role;
   auth: boolean;
@@ -33,7 +34,11 @@ export class MainComponent implements OnInit {
       this.user.roles = [this.role];
     }
     this.http.get(API_URL + '/getarticle').subscribe(
-      (news: Article[]) => { this.articles = news }
+      (news: Article[]) => {
+        this.articles = news;
+        console.log(news);
+      }
     );
+
   }
 }
