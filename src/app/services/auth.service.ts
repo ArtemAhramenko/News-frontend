@@ -5,9 +5,9 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
 import {Observable} from "rxjs/Observable";
 import {LoginResponse} from "../models/LoginResponse";
-import * as jwt_decode from "jwt-decode";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
+import * as jwt_decode from "jwt-decode";
 
 @Injectable()
 export class AuthService {
