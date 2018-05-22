@@ -11,7 +11,6 @@ import {Article} from '../../models/article';
 export class MainComponent implements OnInit {
 
   articles: Article[] = [];
-  ;
 
   constructor(private http: HttpClient) { }
 
