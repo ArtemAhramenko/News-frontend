@@ -11,7 +11,7 @@ import {Article} from '../../../models/article';
 export class ArticleComponent implements OnInit {
   articleId: String;
   article : Article;
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) {
+  constructor(private router: ActivatedRoute, private articleService: ArticleService) {
      this.article = new Article({});
   }
 
@@ -20,6 +20,7 @@ export class ArticleComponent implements OnInit {
     this.getArticleId();
     this.getNews();
     console.log(this.articleId);
+
   }
   getArticleId(){
     this.router.params.subscribe(
