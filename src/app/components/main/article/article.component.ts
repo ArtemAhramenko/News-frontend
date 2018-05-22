@@ -11,13 +11,14 @@ import {Article} from '../../../models/article';
 export class ArticleComponent implements OnInit {
   articleId: String;
   article : Article;
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService) {
+     this.article = new Article({});
+  }
 
   ngOnInit() {
     this.getArticleId();
     this.getNews();
     console.log(this.articleId);
-
   }
   getArticleId(){
     this.route.params.subscribe(
@@ -27,7 +28,9 @@ export class ArticleComponent implements OnInit {
     );
   }
   getNews(){
-    this.articleService.create(this.articleId).subscribe((data) => (this.article = new Article(data)));
-    console.log(this.article);
+    this.articleService.getArticleId(this.articleId).subscribe((data) => {
+      this.article = new Article(data);
+      console.log(data);
+    }, err => console.log(err));
   }
 }

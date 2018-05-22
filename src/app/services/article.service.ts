@@ -12,10 +12,11 @@ export class ArticleService {
   constructor(private http: HttpClient) {
   }
   private headers: HttpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
-  create(id: String) {
+  getArticleId(id: String) {
     let url = API_URL + '/getarticleid/'+ id;
-    return this.http.post(url, {headers: this.headers});
+    return this.http.post(url,  {headers: this.headers});
   }
+
   createArticle(article: ArticleCreate) : Observable<any>{
     let url = API_URL + '/addarticle';
     return this.http.post(url, article, {headers: this.headers});
