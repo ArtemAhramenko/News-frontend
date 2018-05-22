@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../models/user";
 import {Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
+import {Role} from "../../../models/role";
 
 @Component({
   selector: 'app-registration-form',
@@ -13,7 +14,9 @@ export class RegistrationFormComponent implements OnInit {
 
   userForm: FormGroup;
   user: User = new User();
+  role: Role = new Role();
   invalid = false;
+  auth: boolean;
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -21,6 +24,16 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.userService.getCurrentUser() != null) {
+      this.user = this.userService.getCurrentUser();
+      if (this.user.roles !== null) {
+        this.auth = true;
+      }
+    } else {
+      this.role.id = 0;
+      this.role.name = "USER";
+      this.user.roles = [this.role];
+    }
     this.buildForm();
   }
 

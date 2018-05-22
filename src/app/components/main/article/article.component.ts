@@ -15,15 +15,16 @@ export class ArticleComponent implements OnInit {
      this.article = new Article({});
   }
 
+
   ngOnInit() {
     this.getArticleId();
     this.getNews();
     console.log(this.articleId);
   }
   getArticleId(){
-    this.route.params.subscribe(
+    this.router.params.subscribe(
       (params: Params) => {
-        this.articleId = params['id']
+        this.articleId = params['id'];
       }
     );
   }

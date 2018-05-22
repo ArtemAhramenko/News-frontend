@@ -5,6 +5,7 @@ import {AuthComponent} from "./components/auth/auth.component";
 import {RegistrationFormComponent} from "./components/auth/registration-form/registration-form.component";
 import {ArticleComponent} from './components/main/article/article.component';
 import {CreateArticleComponent} from './components/main/create-article/create-article.component';
+import {PersonalAreaComponent} from "./components/main/personal-area/personal-area.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationFormComponent},
   {path: 'article/:id', component: ArticleComponent, pathMatch: 'full'},
   {path: 'registration', component: RegistrationFormComponent},
-  {path: 'create', component: CreateArticleComponent}
+  {path: 'create', component: CreateArticleComponent},
+  {path: 'me/:id', component: PersonalAreaComponent},
 ];
 
 @NgModule({

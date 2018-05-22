@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {UserService} from "../../../services/user.service";
+import {Article} from "../../../models/article";
+import {User} from "../../../models/user";
+import {MainComponent} from "../main.component";
+import {Role} from "../../../models/role";
 
 @Component({
   selector: 'app-header',
@@ -8,13 +13,40 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  user: User = new User();
+  auth: boolean = false;
+  role: Role = new Role();
+  constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
+    if (this.userService.getCurrentUser() != null) {
+      this.user = this.userService.getCurrentUser();
+      if (this.user.roles !== null) {
+        this.auth = true;
+      }
+    } else {
+      this.role.id = 0;
+      this.role.name = "USER";
+      this.user.roles = [this.role];
+    }
   }
 
   showLoginForm() {
-    this.router.navigate(["login"]);
+    this.usualRouter.navigate(["login"]);
+  }
+
+  showUser() {
+    console.log("call service")
+    this.userService.me(this.user.id).subscribe(data => {
+      this.userService.saveUserCred(data as User);
+      console.log(data);
+      this.usualRouter.navigate(["me/"+this.user.id]);
+    });
+  }
+
+  exit() {
+    localStorage.clear();
+    this.usualRouter.navigate([MainComponent]);
   }
 
 }
