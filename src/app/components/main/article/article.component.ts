@@ -20,6 +20,7 @@ export class ArticleComponent implements OnInit {
     this.getArticleId();
     this.getNews();
     console.log(this.articleId);
+
   }
   getArticleId(){
     this.router.params.subscribe(
