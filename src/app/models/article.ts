@@ -7,7 +7,7 @@ export class Article {
   description: string;
   content: string;
   createdDate: any;
-
+  user: User;
 
   constructor(data) {
     this.id = data.id;

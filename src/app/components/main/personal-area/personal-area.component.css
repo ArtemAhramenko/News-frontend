@@ -25,3 +25,41 @@
   visibility: hidden;
   position: absolute;
 }
+
+.details li {
+  list-style: none;
+}
+li {
+  margin-bottom:10px;
+
+}
+
+/* CSS used here will be applied after bootstrap.css */
+body {
+  background-color: #eaeaea;
+}
+
+img.avatar {
+  border: 1px solid #eee;
+}
+
+.only-bottom-margin {
+  margin-top: 0px;
+}
+
+.activity-mini {
+  padding-right: 15px;
+  float: left;
+}
+
+.loginBtn {
+  height: 33px;
+  font-size: 13px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+  padding: 0;
+  margin-top: 0;
+}
