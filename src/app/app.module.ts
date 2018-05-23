@@ -22,7 +22,7 @@ import { CreateArticleComponent } from './components/main/create-article/create-
 import { TagComponent } from './components/main/tag/tag.component';
 import { QuillModule } from 'ngx-quill';
 import { PersonalAreaComponent } from './components/main/personal-area/personal-area.component';
-import { TestComponent } from './components/main/test/test.component';
+import { SportComponent } from './components/main/sport/sport.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { TestComponent } from './components/main/test/test.component';
     CreateArticleComponent,
     TagComponent,
     PersonalAreaComponent,
-    TestComponent
+    SportComponent
   ],
   imports: [
     BrowserModule,
