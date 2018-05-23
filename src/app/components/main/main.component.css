@@ -1,17 +1,17 @@
 .test{
   position: relative;
   width: 100%;
-  margin: 0px;
-  padding: 0px;
+  margin: 0%;
+  padding: 0%;
   overflow: hidden;
 }
-.container{
+.container-mid{
+  width: 45%;
 }
 app-card{
-  width: 45%;
-  margin-left: 20px;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin-left: 1%;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 app-list{
   margin-left: 30px;
@@ -39,3 +39,7 @@ a{
   color: black;
   text-decoration: none;
 }
+.row{
+  margin: 0%;
+}
+
