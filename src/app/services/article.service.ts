@@ -11,7 +11,16 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {
   }
-  private headers: HttpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
+
+  private headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  private headersAuth: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('token')}`
+  });
+
   getArticleId(id: String) {
     let url = API_URL + '/getarticleid/'+ id;
     return this.http.post(url,  {headers: this.headers});
@@ -19,7 +28,7 @@ export class ArticleService {
 
   createArticle(article: ArticleCreate) : Observable<any>{
     let url = API_URL + '/addarticle';
-    return this.http.post(url, article, {headers: this.headers});
+    return this.http.post(url, article, {headers: this.headersAuth});
   }
 
 }
