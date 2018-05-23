@@ -6,6 +6,7 @@ import {RegistrationFormComponent} from "./components/auth/registration-form/reg
 import {ArticleComponent} from './components/main/article/article.component';
 import {CreateArticleComponent} from './components/main/create-article/create-article.component';
 import {PersonalAreaComponent} from "./components/main/personal-area/personal-area.component";
+import {TestComponent} from './components/main/test/test.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'article/:id', component: ArticleComponent, pathMatch: 'full'},
   {path: 'registration', component: RegistrationFormComponent},
   {path: 'create', component: CreateArticleComponent},
+  {path: 'test', component: TestComponent},
   {path: 'me/:id', component: PersonalAreaComponent},
 ];
 
