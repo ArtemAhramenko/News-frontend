@@ -22,7 +22,6 @@ import { CreateArticleComponent } from './components/main/create-article/create-
 import { TagComponent } from './components/main/tag/tag.component';
 import { QuillModule } from 'ngx-quill';
 import { PersonalAreaComponent } from './components/main/personal-area/personal-area.component';
-import { TestComponent } from './components/main/test/test.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +39,7 @@ import { TestComponent } from './components/main/test/test.component';
     ListComponent,
     CreateArticleComponent,
     TagComponent,
-    PersonalAreaComponent,
-    TestComponent
+    PersonalAreaComponent
   ],
   imports: [
     BrowserModule,
