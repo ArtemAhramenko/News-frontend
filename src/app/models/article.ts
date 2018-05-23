@@ -8,6 +8,7 @@ export class Article {
   description: string;
   content: string;
   createdDate: any;
+  user_id: number;
 
   constructor(data) {
     this.id = data.id;
@@ -16,6 +17,7 @@ export class Article {
     this.content = data.content;
     this.createdDate = data.createdDate;
     this.section = new Section(data.section);
+    this.user_id = data.user_id;
     // this.articleTopic = data.articleTopic;
   }
 }

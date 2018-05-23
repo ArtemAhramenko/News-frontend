@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
   }
 
   showUser() {
-    console.log("call service")
     this.userService.me(this.user.id).subscribe(data => {
       this.userService.saveUserCred(data as User);
       console.log(data);

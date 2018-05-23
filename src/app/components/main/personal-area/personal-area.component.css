@@ -63,3 +63,9 @@ a{
   padding: 0;
   margin-top: 0;
 }
+
+.buttonsView {
+  margin-top: -7px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}

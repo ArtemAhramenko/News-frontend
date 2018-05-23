@@ -1,4 +1,5 @@
 import {Role} from "./role";
+import {Article} from "./article";
 
 export class User {
     id: number;
@@ -11,6 +12,7 @@ export class User {
     enabled: boolean;
   // token: string;
     profileImg: string;
+    news: Array<Article>
 
   constructor() {
   }

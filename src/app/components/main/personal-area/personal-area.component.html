@@ -32,4 +32,21 @@
         </div>
       </div>
 
+      <h3 style="text-align: center">Ваши статьи</h3>
+      <div class="jumbotron">
+        <ul>
+          <li *ngFor="let person of news" style="font-size:18px">
+            {{ person.section.heading }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ person.title }}
+            <hr>
+            <button type="button" class="btn btn-primary btn buttonsView">Посмотреть</button>
+            <button type="button" class="btn btn-primary btn buttonsView">Редактировать</button>
+          </li>
+        </ul>
+      </div>
+
+
+
     </div>
+
