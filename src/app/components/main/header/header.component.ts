@@ -15,14 +15,20 @@ export class HeaderComponent implements OnInit {
 
   user: User = new User();
   auth: boolean = false;
+  writer: boolean = false;
   role: Role = new Role();
+  roleReader: Role = new Role();
   constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
+    this.roleReader.name = "WRITER";
     if (this.userService.getCurrentUser() != null) {
       this.user = this.userService.getCurrentUser();
       if (this.user.roles !== null) {
         this.auth = true;
+        if (localStorage.getItem("roles").includes("WRITER")) {
+          this.writer = true;
+        }
       }
     } else {
       this.role.id = 0;
