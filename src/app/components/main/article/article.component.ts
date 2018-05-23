@@ -12,7 +12,7 @@ export class ArticleComponent implements OnInit {
   articleId: String;
   article : Article;
   constructor(private router: ActivatedRoute, private articleService: ArticleService) {
-     this.article = new Article({});
+     this.article = new Article({ section: {}});
   }
 
 
@@ -33,7 +33,6 @@ export class ArticleComponent implements OnInit {
     this.articleService.getArticleId(this.articleId).subscribe((data) => {
       this.article = new Article(data);
       console.log(data);
-      console.log(this.article.user);
     }, err => console.log(err));
   }
 }

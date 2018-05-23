@@ -22,6 +22,8 @@ import { CreateArticleComponent } from './components/main/create-article/create-
 import { TagComponent } from './components/main/tag/tag.component';
 import { QuillModule } from 'ngx-quill';
 import { PersonalAreaComponent } from './components/main/personal-area/personal-area.component';
+import { SportComponent } from './components/main/sport/sport.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { PersonalAreaComponent } from './components/main/personal-area/personal-
     ListComponent,
     CreateArticleComponent,
     TagComponent,
-    PersonalAreaComponent
+    PersonalAreaComponent,
+    SportComponent
   ],
   imports: [
     BrowserModule,
