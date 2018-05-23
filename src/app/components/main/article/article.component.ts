@@ -33,6 +33,7 @@ export class ArticleComponent implements OnInit {
     this.articleService.getArticleId(this.articleId).subscribe((data) => {
       this.article = new Article(data);
       console.log(data);
+      console.log(this.article.user);
     }, err => console.log(err));
   }
 }

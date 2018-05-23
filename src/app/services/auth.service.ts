@@ -42,6 +42,7 @@ export class AuthService {
     let tokenInfo = AuthService.getDecodedAccessToken(token.token); // decode token
     this.user.id = tokenInfo.userId;
     this.user.roles = tokenInfo.roles;
+    localStorage.setItem('roles', tokenInfo.roles);
     this.userService.saveUser(this.user);
   }
 
