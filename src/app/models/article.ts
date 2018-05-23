@@ -1,4 +1,5 @@
 import {Section} from './section';
+import {User} from "./user";
 
 export class Article {
   id: number;

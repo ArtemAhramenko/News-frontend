@@ -8,6 +8,7 @@ import {CreateArticleComponent} from './components/main/create-article/create-ar
 import {PersonalAreaComponent} from "./components/main/personal-area/personal-area.component";
 import {SportComponent} from './components/main/sport/sport.component';
 
+
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: '', component: MainComponent},

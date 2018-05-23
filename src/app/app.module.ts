@@ -24,6 +24,7 @@ import { QuillModule } from 'ngx-quill';
 import { PersonalAreaComponent } from './components/main/personal-area/personal-area.component';
 import { SportComponent } from './components/main/sport/sport.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
