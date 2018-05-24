@@ -26,6 +26,10 @@ export class ArticleService {
     return this.http.post(url,  {headers: this.headers});
   }
 
+  create() {
+    return this.http.get(API_URL + '/create',  {headers: this.headersAuth});
+  }
+
   createArticle(article: ArticleCreate) : Observable<any>{
     let url = API_URL + '/addarticle';
     return this.http.post(url, article, {headers: this.headersAuth});
