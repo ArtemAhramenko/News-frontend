@@ -1,35 +1,100 @@
 
 <app-header></app-header>
-
-    <div class="container">
-      <div class="jumbotron">
+  <form [formGroup]="userForm">
+    <div class="container" >
+      <div class="jumbotron" style="padding-bottom: 5px">
         <div class="row">
           <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
             <img alt="User Pic" src={{user.profileImg}} class="img-circle img-responsive img" height="256" width="256">
-            <div class="container" style=" margin-top: 10px" >
-              <h2 style="text-align: left; font-size: 18px; width:245px;">{{user.email}}</h2>
-            </div>
           </div>
           <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
             <ul class="container details">
-              <fieldset disabled>
-                <div class="form-group">
-                  <label style="font-size: 22px" for="disabledTextInput">Ваш имя:</label>
-                  <input type="text" style="font-size: 20px" id="disabledTextInput" class="form-control" placeholder="{{user.username}}">
-                </div>
-              </fieldset>
-              <button type="button" class="btn btn-primary btn-blue-grey btn btnChangeUsr">Изменить имя</button>
 
-              <fieldset disabled>
+
+
+              <fieldset *ngIf="!changeName" disabled>
                 <div class="form-group">
-                  <label style="font-size: 22px" for="exampleInputPassword">Ваш пароль:</label>
-                  <input type="password" style="font-size: 18px" class="form-control" id="exampleInputPassword" placeholder="{{user.password}}">
+                  <label style="font-size: 22px" for="alias">Ваш имя:</label>
+                  <input style="font-size: 22px"
+                         type="text"
+                         placeholder="{{user.alias}}"
+                         id="alias"
+                         class="form-control"
+                         formControlName="alias"
+                         [(ngModel)]="user.alias"
+                         [ngClass]="{'error' : userForm.controls['alias'].hasError('required')
+           && (userForm.controls['alias'].touched || invalid ) }">
+                  <i *ngIf="userForm.controls['alias'].hasError('required')
+     && (userForm.controls['alias'].touched || invalid )"
+                     class="fa fa-exclamation-triangle error-triangle showError"></i>
                 </div>
               </fieldset>
-              <button type="button" class="btn btn-primary btn-blue-grey btn btnChangeUsr">Изменить пароль</button>
+
+              <fieldset *ngIf="changeName">
+                <div class="form-group">
+                  <label style="font-size: 22px" for="alias2">Ваш имя:</label>
+                  <input style="font-size: 22px"
+                         type="text"
+                         placeholder="{{user.alias}}"
+                         id="alias2"
+                         class="form-control"
+                         formControlName="alias2"
+                         [(ngModel)]="user.alias"
+                         [ngClass]="{'error' : userForm.controls['alias2'].hasError('required')
+           && (userForm.controls['alias2'].touched || invalid ) }">
+                  <i *ngIf="userForm.controls['alias2'].hasError('required')
+     && (userForm.controls['alias2'].touched || invalid )"
+                     class="fa fa-exclamation-triangle error-triangle showError"></i>
+                </div>
+              </fieldset>
+              <button type="button" (click)="changeNameBtn()" class="btn btn-primary btn-blue-grey btn btnChangeUsr">Изменить имя</button>
+
+
+
+
+              <fieldset *ngIf="!changePass" disabled>
+                <div class="form-group">
+                  <label style="font-size: 18px" for="password">Ваш пароль:</label>
+                  <input style="font-size: 18px"
+                         type="text"
+                         placeholder="{{user.alias}}"
+                         id="password"
+                         class="form-control"
+                         formControlName="password"
+                         [(ngModel)]="user.password"
+                         [ngClass]="{'error' : userForm.controls['password'].hasError('required')
+           && (userForm.controls['password'].touched || invalid ) }">
+                  <i *ngIf="userForm.controls['password'].hasError('required')
+     && (userForm.controls['password'].touched || invalid )"
+                     class="fa fa-exclamation-triangle error-triangle showError"></i>
+                </div>
+              </fieldset>
+
+
+              <fieldset *ngIf="changePass">
+                <div class="form-group">
+                  <label style="font-size: 18px" for="password2">Ваш пароль:</label>
+                  <input style="font-size: 18px"
+                         type="text"
+                         placeholder="{{user.alias}}"
+                         id="password2"
+                         class="form-control"
+                         formControlName="password2"
+                         [(ngModel)]="user.password"
+                         [ngClass]="{'error' : userForm.controls['password2'].hasError('required')
+           && (userForm.controls['password2'].touched || invalid ) }">
+                  <i *ngIf="userForm.controls['password2'].hasError('required')
+     && (userForm.controls['password2'].touched || invalid )"
+                     class="fa fa-exclamation-triangle error-triangle showError"></i>
+                </div>
+              </fieldset>
+
+
+              <button type="button" (click)="changePassBtn()" class="btn btn-primary btn-blue-grey btn btnChangeUsr">Изменить пароль</button>
             </ul>
           </div>
         </div>
+        <button type="button" (click)="saveChanges()" class="btn btn-default btn-blue-grey btn-lg btn-block" style="margin-bottom: 5px">Сохранить изменения</button>
       </div>
 
 
@@ -48,8 +113,5 @@
           </li>
         </ul>
       </div>
-
-
-
     </div>
-
+  </form>

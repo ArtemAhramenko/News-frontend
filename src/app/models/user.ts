@@ -4,6 +4,7 @@ import {Article} from "./article";
 export class User {
     id: number;
     username: string;
+    alias: string;
     email: string;
     password: string;
     roles: Array<Role>;
