@@ -23,6 +23,10 @@ import { TagComponent } from './components/main/tag/tag.component';
 import { QuillModule } from 'ngx-quill';
 import { PersonalAreaComponent } from './components/main/personal-area/personal-area.component';
 import { SportComponent } from './components/main/sport/sport.component';
+import { PoliticsComponent } from './components/main/politics/politics.component';
+import { PeopleComponent } from './components/main/people/people.component';
+import { TechnologyComponent } from './components/main/technology/technology.component';
+
 
 
 @NgModule({
@@ -42,7 +46,10 @@ import { SportComponent } from './components/main/sport/sport.component';
     CreateArticleComponent,
     TagComponent,
     PersonalAreaComponent,
-    SportComponent
+    SportComponent,
+    PoliticsComponent,
+    PeopleComponent,
+    TechnologyComponent,
   ],
   imports: [
     BrowserModule,

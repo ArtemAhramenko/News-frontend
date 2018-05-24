@@ -12,9 +12,8 @@ import {Role} from "../../models/role";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   articles: Article[] = [];
-
+  popularArticles: Article[] = [];
   user: User = new User();
   role: Role = new Role;
   auth: boolean;
@@ -39,6 +38,11 @@ export class MainComponent implements OnInit {
         console.log(news);
       }
     );
-
+    this.http.get(API_URL + '/getpopulararticle').subscribe(
+      (news: Article[]) => {
+        this.popularArticles = news;
+        console.log(news);
+      }
+    );
   }
 }

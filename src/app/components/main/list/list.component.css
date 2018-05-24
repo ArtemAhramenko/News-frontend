@@ -5,3 +5,7 @@ a{
   color: black;
   text-decoration: none;
 }
+.fa-star{
+  float: left;
+  color: orange;
+}

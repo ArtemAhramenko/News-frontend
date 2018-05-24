@@ -6,5 +6,5 @@ export class ArticleCreate {
   description: string;
   content: string;
   createdDate: any;
-  user: User;
+  sectionId: number;
 }

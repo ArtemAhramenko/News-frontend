@@ -15,8 +15,9 @@
           <i class="fa fa-futbol-o" aria-hidden="true"></i>
             <strong>{{article.section.heading}}</strong>
           </a>
+          <!--<span *ngIf="{{article.section.id}}"></span>-->
           <i class="fa fa-star" aria-hidden="true" >
-            <strong class="black-text"> 3.5</strong>
+            <strong class="black-text"> {{article.rating}}</strong>
           </i>
           <!--<i class="fa fa-institution" aria-hidden="true"></i>ПОЛИТИКА-->
           <!--<i class="fa fa-wrench" aria-hidden="true"></i>ТЕХНОЛОГИИ-->
@@ -29,7 +30,7 @@
         <strong>{{article.title}}</strong>
       </h4>
       <p>by
-        <a class="font-weight-bold dark-grey-text">Billy Forester</a>, <span ng-non-bindable>{{article.createdDate | date : 'd/M/yy'}}</span></p>
+        <a class="font-weight-bold dark-grey-text">Billy Forester</a>, <span ng-non-bindable>{{article.createdDate | date : 'dd/MM/yy HH:mm'}}</span></p>
       <p class="grey-text">{{article.description}}</p>
 
       <a class="btn btn-pink btn-rounded btn-md"  [routerLink]="['/article',article.id]">Подробнее</a>

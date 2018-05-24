@@ -34,6 +34,7 @@ export class CreateArticleComponent implements OnInit {
     }, 2800)
     this.initForm();
   }
+
   onSubmit() {
     const controls = this.inputForm.controls;
 
@@ -45,7 +46,7 @@ export class CreateArticleComponent implements OnInit {
     this.articleCreate = this.inputForm.value;
     this.articleService.createArticle(this.articleCreate).subscribe(err=>{
       console.log(err);
-    })
+    });
 
     console.log(this.inputForm.value);
   }
