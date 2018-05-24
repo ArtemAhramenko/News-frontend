@@ -1,0 +1,80 @@
+.general{
+  display: flex;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+  overflow: hidden;
+}
+
+.container-left{
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  width: 20%;
+  margin: 1%;
+}
+.container-mid{
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  width: 60%;
+  margin: 1%;
+}
+.container-right{
+  display: flex;
+  width: 20%;
+  margin: 1%;
+}
+@media screen and (max-width:479px) {
+  .container-right{
+    order: 1;
+    width: 100%;
+  }
+  .container-left{
+    order: 2;
+    width: 100%;
+  }
+  .container-mid{
+    order: 3;
+    width: 100%;
+  }
+  app-card{
+    width: 100% !important;
+  }
+  .general{
+    flex-direction: column;
+
+  }
+}
+app-card{
+  margin-left: 1%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  width: 48%;
+}
+app-list{
+  flex-direction: row;
+}
+app-tag{
+  float: right;
+  width: 15%;
+}
+.h1-responsive{
+  margin-bottom: 7%;
+}
+h1{
+  text-align: center;
+}
+.h2-responsive{
+  text-align: center;
+}
+.list-group-flush{
+  word-wrap: break-word;
+}
+a{
+  color: black;
+  text-decoration: none;
+}
+.row{
+  margin: 0%;
+}
