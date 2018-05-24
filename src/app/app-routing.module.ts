@@ -7,6 +7,9 @@ import {ArticleComponent} from './components/main/article/article.component';
 import {CreateArticleComponent} from './components/main/create-article/create-article.component';
 import {PersonalAreaComponent} from "./components/main/personal-area/personal-area.component";
 import {SportComponent} from './components/main/sport/sport.component';
+import {PoliticsComponent} from './components/main/politics/politics.component';
+import {PeopleComponent} from './components/main/people/people.component';
+import {TechnologyComponent} from './components/main/technology/technology.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -17,6 +20,9 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationFormComponent},
   {path: 'create', component: CreateArticleComponent},
   {path: 'sport', component: SportComponent},
+  {path: 'politics', component: PoliticsComponent},
+  {path: 'people', component: PeopleComponent},
+  {path: 'technology', component: TechnologyComponent},
   {path: 'me/:id', component: PersonalAreaComponent},
 ];
 

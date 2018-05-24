@@ -11,16 +11,19 @@
   flex-direction: row;
   flex-direction: column;
   width: 20%;
+  margin: 1%;
 }
 .container-mid{
   display: flex;
   flex-direction: row;
   flex-direction: column;
   width: 60%;
+  margin: 1%;
 }
 .container-right{
   display: flex;
   width: 20%;
+  margin: 1%;
 }
 @media screen and (max-width:479px) {
   .container-right{

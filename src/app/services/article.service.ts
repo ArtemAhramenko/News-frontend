@@ -30,5 +30,8 @@ export class ArticleService {
     let url = API_URL + '/addarticle';
     return this.http.post(url, article, {headers: this.headersAuth});
   }
-
+  getSection(id: number){
+    let url = API_URL + '/getsection/'+ id;
+    return this.http.post(url,  {headers: this.headers});
+  }
 }

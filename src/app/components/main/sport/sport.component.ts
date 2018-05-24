@@ -5,6 +5,9 @@ import {User} from '../../../models/user';
 import {UserService} from '../../../services/user.service';
 import {HttpClient} from '@angular/common/http';
 import {API_URL} from '../../../constants/API';
+import {Params} from '@angular/router';
+import {ArticleService} from '../../../services/article.service';
+import {SPORT_ID} from '../../../constants/SectionsId';
 
 @Component({
   selector: 'app-test',
@@ -17,9 +20,10 @@ export class SportComponent implements OnInit {
   user: User = new User();
   role: Role = new Role;
   auth: boolean;
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(private http: HttpClient, private userService: UserService,  private articleService: ArticleService) { }
 
   ngOnInit() {
+    this.getNews();
     if (this.userService.getCurrentUser() != null) {
     this.user = this.userService.getCurrentUser();
     if (this.user.roles !== null) {
@@ -30,13 +34,21 @@ export class SportComponent implements OnInit {
     this.role.name = "USER";
     this.user.roles = [this.role];
   }
-    this.http.get(API_URL + '/getarticle').subscribe(
-      (news: Article[]) => {
+    // this.http.get(API_URL + '/getarticle').subscribe(
+    //   (news: Article[]) => {
+    //     this.articles = news;
+    //     console.log(news);
+    //   }
+    // );
+
+  }
+
+  getNews() {
+    this.articleService.getSection(SPORT_ID).subscribe((news: Article[]) => {
         this.articles = news;
         console.log(news);
       }
     );
-
   }
 
 }
