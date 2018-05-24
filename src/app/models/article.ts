@@ -9,6 +9,7 @@ export class Article {
   content: string;
   createdDate: any;
   user_id: number;
+  rating: number;
 
   constructor(data) {
     this.id = data.id;
@@ -19,5 +20,6 @@ export class Article {
     this.section = new Section(data.section);
     this.user_id = data.user_id;
     // this.articleTopic = data.articleTopic;
+    this.rating = data.rating;
   }
 }

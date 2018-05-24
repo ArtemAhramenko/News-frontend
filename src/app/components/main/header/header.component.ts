@@ -6,7 +6,9 @@ import {User} from "../../../models/user";
 import {MainComponent} from "../main.component";
 import {Role} from "../../../models/role";
 import {ArticleService} from "../../../services/article.service";
-import {API_URL} from "../../../constants/API";
+import {API_URL} from '../../../constants/API';
+import {Section} from '../../../models/section';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +16,14 @@ import {API_URL} from "../../../constants/API";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  sections: Section[] = [];
   user: User = new User();
   auth: boolean = false;
   writer: boolean = false;
   role: Role = new Role();
   roleReader: Role = new Role();
   constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService,
-              private articleService: ArticleService) { }
+              private articleService: ArticleService, private http: HttpClient) { }
 
   ngOnInit() {
     this.roleReader.name = "WRITER";
@@ -38,6 +40,12 @@ export class HeaderComponent implements OnInit {
       this.role.name = "USER";
       this.user.roles = [this.role];
     }
+    this.http.get(API_URL + '/getallsections').subscribe(
+      (headings: Section[]) => {
+        this.sections = headings;
+        console.log(this.sections);
+      }
+    );
   }
 
   showLoginForm() {
