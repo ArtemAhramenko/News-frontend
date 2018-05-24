@@ -44,10 +44,12 @@ export class AuthService {
     this.user.roles = tokenInfo.roles;
     localStorage.setItem('roles', tokenInfo.roles);
     this.userService.saveUser(this.user);
+    console.log(this.user);
   }
 
   authUser(user: User) {
     this.http.post(API_URL+'/auth', user).subscribe(authToken => {
+      console.log(authToken)
       this.saveToken(authToken);
     })
   }

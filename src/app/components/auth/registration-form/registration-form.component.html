@@ -1,7 +1,6 @@
 <app-header></app-header>
 <form class="mainForm" [formGroup]="userForm">
   <p class="h4 text-center mb-4">Регистрация</p>
-
   <!-- Default input name -->
   <div class="md-form">
     <i class="fa fa-user prefix grey-text"></i>
@@ -18,8 +17,26 @@
      && (userForm.controls['username'].touched || invalid )"
          class="fa fa-exclamation-triangle error-triangle showError"></i>
   </div>
-
   <br>
+
+  <!-- Default input nickname -->
+  <div class="md-form">
+    <i class="fa fa-user prefix grey-text"></i>
+    <input style="font-size: 15px"
+           type="text"
+           placeholder="{{'Введите никнэйм'}}"
+           id="alias"
+           class="form-control"
+           formControlName="alias"
+           [(ngModel)]="user.alias"
+           [ngClass]="{'error' : userForm.controls['alias'].hasError('required')
+           && (userForm.controls['alias'].touched || invalid ) }">
+    <i *ngIf="userForm.controls['alias'].hasError('required')
+     && (userForm.controls['alias'].touched || invalid )"
+       class="fa fa-exclamation-triangle error-triangle showError"></i>
+  </div>
+  <br>
+
 
   <!-- Default input email -->
   <div class="md-form">

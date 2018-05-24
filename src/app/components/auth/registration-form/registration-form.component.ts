@@ -42,6 +42,9 @@ export class RegistrationFormComponent implements OnInit {
       'username': ['', [
         Validators.required
       ]],
+      'alias': ['', [
+        Validators.required
+      ]],
       'email': ['', [
         Validators.required,
         Validators.email

@@ -5,6 +5,7 @@ import {Article} from "../../../models/article";
 import {User} from "../../../models/user";
 import {MainComponent} from "../main.component";
 import {Role} from "../../../models/role";
+import {ArticleService} from "../../../services/article.service";
 import {API_URL} from '../../../constants/API';
 import {Section} from '../../../models/section';
 import {HttpClient} from '@angular/common/http';
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
   writer: boolean = false;
   role: Role = new Role();
   roleReader: Role = new Role();
-  constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService, private http: HttpClient) { }
+  constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService,
+              private articleService: ArticleService, private http: HttpClient) { }
 
   ngOnInit() {
     this.roleReader.name = "WRITER";
@@ -51,11 +53,16 @@ export class HeaderComponent implements OnInit {
   }
 
   showUser() {
-    console.log("call service")
     this.userService.me(this.user.id).subscribe(data => {
       this.userService.saveUserCred(data as User);
       console.log(data);
       this.usualRouter.navigate(["me/"+this.user.id]);
+    });
+  }
+
+  create() {
+    this.articleService.create().subscribe(data => {
+      this.usualRouter.navigate([API_URL + data]);
     });
   }
 

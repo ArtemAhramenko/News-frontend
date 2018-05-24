@@ -23,6 +23,11 @@ export class UserService {
     return this.http.get(url, {headers: this.headers});
   }
 
+  sendChanges(user: User) {
+    let url = API_URL + '/me' + '/' + this.getCurrentUser().id;
+    return this.http.post(url, user,{headers: this.headers});
+  }
+
   saveUser(user: User) {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
