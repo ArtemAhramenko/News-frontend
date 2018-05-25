@@ -13,9 +13,9 @@
 
 
               <fieldset *ngIf="!changeName" disabled>
-                <div class="form-group">
-                  <label style="font-size: 22px" for="alias">Ваш имя:</label>
-                  <input style="font-size: 22px"
+                <div class="md-form">
+                  <i class="fa fa-user prefix grey-text"></i>
+                  <input style="font-size: 20px"
                          type="text"
                          placeholder="{{user.alias}}"
                          id="alias"
@@ -31,11 +31,11 @@
               </fieldset>
 
               <fieldset *ngIf="changeName">
-                <div class="form-group">
-                  <label style="font-size: 22px" for="alias2">Ваш имя:</label>
-                  <input style="font-size: 22px"
+                <div class="md-form">
+                  <i class="fa fa-user prefix grey-text"></i>
+                  <input style="font-size: 20px"
                          type="text"
-                         placeholder="{{user.alias}}"
+                         placeholder="{{'Введите новое имя'}}"
                          id="alias2"
                          class="form-control"
                          formControlName="alias2"
@@ -50,14 +50,12 @@
               <button type="button" (click)="changeNameBtn()" class="btn btn-primary btn-blue-grey btn btnChangeUsr">Изменить имя</button>
 
 
-
-
               <fieldset *ngIf="!changePass" disabled>
-                <div class="form-group">
-                  <label style="font-size: 18px" for="password">Ваш пароль:</label>
-                  <input style="font-size: 18px"
-                         type="text"
-                         placeholder="{{user.alias}}"
+                <div class="md-form">
+                  <i class="fa fa-lock prefix grey-text"></i>
+                  <input style="font-size: 20px"
+                         type="password"
+                         placeholder="{{'•••••••••••••'}}"
                          id="password"
                          class="form-control"
                          formControlName="password"
@@ -65,18 +63,18 @@
                          [ngClass]="{'error' : userForm.controls['password'].hasError('required')
            && (userForm.controls['password'].touched || invalid ) }">
                   <i *ngIf="userForm.controls['password'].hasError('required')
-     && (userForm.controls['password'].touched || invalid )"
-                     class="fa fa-exclamation-triangle error-triangle showError"></i>
+    && (userForm.controls['password'].touched || invalid )"
+                     class="fa fa-exclamation-triangle error-triangle"></i>
                 </div>
               </fieldset>
 
 
               <fieldset *ngIf="changePass">
-                <div class="form-group">
-                  <label style="font-size: 18px" for="password2">Ваш пароль:</label>
-                  <input style="font-size: 18px"
-                         type="text"
-                         placeholder="{{user.alias}}"
+                <div class="md-form">
+                  <i class="fa fa-lock prefix grey-text"></i>
+                  <input style="font-size: 20px"
+                         type="password"
+                         placeholder="{{'Введите новый пароль'}}"
                          id="password2"
                          class="form-control"
                          formControlName="password2"
@@ -84,8 +82,8 @@
                          [ngClass]="{'error' : userForm.controls['password2'].hasError('required')
            && (userForm.controls['password2'].touched || invalid ) }">
                   <i *ngIf="userForm.controls['password2'].hasError('required')
-     && (userForm.controls['password2'].touched || invalid )"
-                     class="fa fa-exclamation-triangle error-triangle showError"></i>
+    && (userForm.controls['password2'].touched || invalid )"
+                     class="fa fa-exclamation-triangle error-triangle"></i>
                 </div>
               </fieldset>
 
