@@ -16,22 +16,22 @@ export class PersonalAreaComponent implements OnInit {
   @Input() news: Article[];
   changePass: boolean = false;
   changeName: boolean = false;
+  invalid = false;
 
   constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
-
     this.userForm = this.fb.group({
-      'alias': [ [
+      'alias': [' ', [
         Validators.required
       ]],
-      'alias2': [ [
+      'alias2': [' ', [
         Validators.required
       ]],
-      'password': [ [
+      'password': [' ', [
         Validators.required
       ]],
-      'password2': [ [
+      'password2': [' ', [
         Validators.required
       ]]
     });
@@ -51,7 +51,11 @@ export class PersonalAreaComponent implements OnInit {
   }
 
   saveChanges() {
-    console.log("ay");
+    if (this.userForm.invalid) {
+      this.invalid = true;
+      return
+    }
+    this.user.id = this.userService.getCurrentUser().id;
     this.userService.sendChanges(this.user).subscribe();
   }
 }

@@ -24,7 +24,7 @@ export class UserService {
   }
 
   sendChanges(user: User) {
-    let url = API_URL + '/me' + '/' + this.getCurrentUser().id;
+    let url = API_URL + '/changeMe';
     return this.http.post(url, user,{headers: this.headers});
   }
 
