@@ -30,7 +30,7 @@
         <strong>{{article.title}}</strong>
       </h4>
       <p>by
-        <a class="font-weight-bold dark-grey-text">Billy Forester</a>, <span ng-non-bindable>{{article.createdDate | date : 'dd/MM/yy HH:mm'}}</span></p>
+        <a class="font-weight-bold dark-grey-text">{{article.user.alias}}</a>, <span ng-non-bindable>{{article.createdDate | date : 'dd/MM/yy HH:mm'}}</span></p>
       <p class="grey-text">{{article.description}}</p>
 
       <a class="btn btn-pink btn-rounded btn-md"  [routerLink]="['/article',article.id]">Подробнее</a>

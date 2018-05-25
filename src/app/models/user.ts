@@ -1,5 +1,6 @@
 import {Role} from "./role";
 import {Article} from "./article";
+import {Section} from './section';
 
 export class User {
     id: number;
@@ -16,6 +17,7 @@ export class User {
     news: Array<Article>
 
   constructor() {
+
   }
 
 }

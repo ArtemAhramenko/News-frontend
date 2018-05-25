@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {V} from '@angular/core/src/render3';
 import {ArticleCreate} from '../../../models/articleCreate';
 import {ArticleService} from '../../../services/article.service';
+import {Section} from '../../../models/section';
 
 @Component({
   selector: 'app-check',
@@ -15,13 +16,16 @@ import {ArticleService} from '../../../services/article.service';
 
 export class CreateArticleComponent implements OnInit {
   articleCreate: ArticleCreate = new ArticleCreate();
+  sections: Section[] = [];
+  lala: any;
+
   public editor;
   public editorContent = `<h3>I am Example content</h3>`;
   public editorOptions = {
     placeholder: "insert content..."
   };
   inputForm: FormGroup;
-  constructor(private fb: FormBuilder, private articleService: ArticleService) {
+  constructor(private fb: FormBuilder, private articleService: ArticleService, private http: HttpClient) {
 
   }
 
@@ -31,8 +35,14 @@ export class CreateArticleComponent implements OnInit {
       this.editorContent = '<h1>content changed!</h1>';
       console.log('you can use the quill instance object to do something', this.editor);
       // this.editor.disable();
-    }, 2800)
+    }, 2800);
     this.initForm();
+    this.http.get(API_URL + '/getallsections').subscribe(
+      (headings: Section[]) => {
+        this.sections = headings;
+        console.log(this.sections);
+      }
+    );
   }
 
   onSubmit() {

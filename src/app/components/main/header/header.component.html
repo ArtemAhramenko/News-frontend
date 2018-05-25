@@ -6,27 +6,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light" [routerLink]="['/sport']">{{sections[0].heading}}<span class="sr-only">(current)</span></a>
+        <li *ngFor="let h of sections" class="nav-item">
+          <a class="nav-link waves-effect waves-light" [routerLink]="['/sport']">{{h.heading}}<span class="sr-only">(current)</span></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light" [routerLink]="['/politics']">{{sections[1].heading}}</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light" [routerLink]="['/people']">{{sections[2].heading}}</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light" [routerLink]="['/technology']">{{sections[3].heading}}</a>
-        </li>
 
       </ul>
-
+      <select class="mdb-select" name="ssas" formControlName="sectionId" >
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">ru</option>
+        <option value="2">by</option>
+      </select>
       <form class="form-inline waves-effect waves-light">
         <input class="form-control mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
       </form>
