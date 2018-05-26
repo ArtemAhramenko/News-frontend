@@ -170,3 +170,12 @@ input::-webkit-input-placeholder {
 input::placeholder {
   font-size: 15px;
 }
+
+.buttonsView2 {
+  margin-top: -7px;
+  font-size: 12px;
+  margin-bottom: 25px;
+  width: 180px;
+  height: 30px;
+  padding: 5px;
+}

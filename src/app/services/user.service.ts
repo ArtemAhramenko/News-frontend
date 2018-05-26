@@ -52,5 +52,14 @@ export class UserService {
     }
   }
 
+  getAllUsers()   {
+    let url = API_URL + '/getAllUsers';
+    return this.http.get(url, {headers: this.headers});
+  }
+
+  checkProfile(name: string) {
+    let url = API_URL + '/getUserByUsername';
+    return this.http.post(url, name, {headers: this.headers});
+  }
 
 }

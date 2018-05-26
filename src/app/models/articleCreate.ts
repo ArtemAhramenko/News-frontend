@@ -1,7 +1,7 @@
 import {User} from "./user";
 
 export class ArticleCreate {
-  id: number;
+  userId: number;
   title: string;
   description: string;
   content: string;

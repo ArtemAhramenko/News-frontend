@@ -7,6 +7,7 @@ import {V} from '@angular/core/src/render3';
 import {ArticleCreate} from '../../../models/articleCreate';
 import {ArticleService} from '../../../services/article.service';
 import {Section} from '../../../models/section';
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-check',
@@ -17,7 +18,7 @@ import {Section} from '../../../models/section';
 export class CreateArticleComponent implements OnInit {
   articleCreate: ArticleCreate = new ArticleCreate();
   sections: Section[] = [];
-  lala: any;
+  sectionId: number;
 
   public editor;
   public editorContent = `<h3>I am Example content</h3>`;
@@ -25,12 +26,13 @@ export class CreateArticleComponent implements OnInit {
     placeholder: "insert content..."
   };
   inputForm: FormGroup;
-  constructor(private fb: FormBuilder, private articleService: ArticleService, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private articleService: ArticleService, private userService: UserService, private http: HttpClient) {
 
   }
 
 
   ngOnInit() {
+
     setTimeout(() => {
       this.editorContent = '<h1>content changed!</h1>';
       console.log('you can use the quill instance object to do something', this.editor);
@@ -46,6 +48,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.sectionId);
     const controls = this.inputForm.controls;
 
     if (this.inputForm.invalid) {
@@ -54,6 +57,17 @@ export class CreateArticleComponent implements OnInit {
       return;
     }
     this.articleCreate = this.inputForm.value;
+    this.articleCreate.userId = this.userService.getCurrentUser().id;
+
+
+
+    //FIX THIS
+    this.articleCreate.sectionId = 1;
+    this.articleCreate.createdDate = "2018-05-23 17:12:30";
+    ///////////////////////////////////////
+
+
+
     this.articleService.createArticle(this.articleCreate).subscribe(err=>{
       console.log(err);
     });

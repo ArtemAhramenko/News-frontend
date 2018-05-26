@@ -3,6 +3,7 @@ import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {Article} from "../../../models/article";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ArticleService} from "../../../services/article.service";
 
 @Component({
   selector: 'app-personal-area',
@@ -17,8 +18,10 @@ export class PersonalAreaComponent implements OnInit {
   changePass: boolean = false;
   changeName: boolean = false;
   invalid = false;
+  peoples = false;
+  allUsers: User[] = [];
 
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private articleService: ArticleService) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -57,5 +60,26 @@ export class PersonalAreaComponent implements OnInit {
     }
     this.user.id = this.userService.getCurrentUser().id;
     this.userService.sendChanges(this.user).subscribe();
+  }
+
+  changeListArticles() {
+    this.peoples = false;
+  }
+
+  changeListPeoples() {
+    this.peoples = true;
+    this.userService.getAllUsers().subscribe((data: User[]) => {
+        this.allUsers = data;
+        console.log(this.allUsers);
+        console.log("sadsadsad");
+      }
+    )
+  }
+
+  profileCheck() {
+    this.userService.checkProfile(this.user.username).subscribe(data => {
+      console.log(data);
+    })
+
   }
 }
