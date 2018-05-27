@@ -32,7 +32,15 @@
   </div>
 </div>
 <!--Grid row-->
+  <div class="container">
 
+    <!-- regular rating -->
+    <rating [(ngModel)]="starsCount"
+            [float]="true"
+            (ngModelChange)="setRating()"
+    ></rating>
+    <br/><br/>
+  </div>
 <hr class="mb-5 mt-4">
 
 </section>
@@ -135,4 +143,4 @@
   <!--/.Leave a reply form-->
 
 </section>
-<app-c
+

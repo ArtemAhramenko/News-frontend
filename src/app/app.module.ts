@@ -31,6 +31,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {SelectedUserComponent} from './components/main/selected-user/selected-user.component';
 import {LocalizationService} from './services/localization.service';
 import {AdminService} from './services/admin.service';
+import {RatingModule} from 'ngx-rating'
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -67,6 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule,
     QuillModule,
     HttpClientModule,
+    RatingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -78,4 +80,6 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [UserService, AuthService, ArticleService, LocalizationService, AdminService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
