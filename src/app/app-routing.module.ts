@@ -10,6 +10,7 @@ import {SportComponent} from './components/main/sport/sport.component';
 import {PoliticsComponent} from './components/main/politics/politics.component';
 import {PeopleComponent} from './components/main/people/people.component';
 import {TechnologyComponent} from './components/main/technology/technology.component';
+import {SelectedUserComponent} from "./components/main/selected-user/selected-user.component";
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'people', component: PeopleComponent},
   {path: 'technology', component: TechnologyComponent},
   {path: 'me/:id', component: PersonalAreaComponent},
+  {path: 'selectedUser/:id', component: SelectedUserComponent},
 ];
 
 @NgModule({

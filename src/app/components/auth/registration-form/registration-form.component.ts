@@ -63,6 +63,14 @@ export class RegistrationFormComponent implements OnInit {
     this.userService.create(this.user).subscribe(
       data => {
         this.router.navigate(['/login'])
+      },
+      error => {
+        if (error.status === 500) {
+          alert({
+            severity: 'error', summary: 'Error',
+            detail: 'Пользователь с таким именем уже зарегестрирован'
+          })
+        }
       }
     );
   }

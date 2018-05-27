@@ -4,6 +4,8 @@ import {UserService} from "../../../services/user.service";
 import {Article} from "../../../models/article";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ArticleService} from "../../../services/article.service";
+import {Router} from "@angular/router";
+import {selectUser} from "../../../models/selectUser";
 
 @Component({
   selector: 'app-personal-area',
@@ -20,10 +22,14 @@ export class PersonalAreaComponent implements OnInit {
   invalid = false;
   peoples = false;
   allUsers: User[] = [];
+  admin = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private articleService: ArticleService) { }
+  constructor(private usualRouter: Router, private fb: FormBuilder, private userService: UserService, private articleService: ArticleService) { }
 
   ngOnInit() {
+    if (localStorage.getItem("roles").includes("ADMIN")) {
+      this.admin = true;
+    }
     this.userForm = this.fb.group({
       'alias': [' ', [
         Validators.required
@@ -76,10 +82,11 @@ export class PersonalAreaComponent implements OnInit {
     )
   }
 
-  profileCheck() {
-    this.userService.checkProfile(this.user.username).subscribe(data => {
+  profileCheck(id: number) {
+    this.userService.me(id).subscribe(data => {
+      this.userService.selectedUser(data as selectUser);
       console.log(data);
-    })
-
+      this.usualRouter.navigate(["selectedUser/"+id]);
+    });
   }
 }
