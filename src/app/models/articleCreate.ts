@@ -7,4 +7,5 @@ export class ArticleCreate {
   content: string;
   createdDate: any;
   sectionId: number;
+  rating: number;
 }

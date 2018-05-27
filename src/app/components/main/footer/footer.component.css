@@ -1,4 +1,9 @@
 .down {
   padding: 0;
 }
-
+.container-fluid{
+  height: 50px;
+}
+.page-footer{
+  margin-top: 0px;
+}

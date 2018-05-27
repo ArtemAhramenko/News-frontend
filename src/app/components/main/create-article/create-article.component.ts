@@ -19,6 +19,8 @@ export class CreateArticleComponent implements OnInit {
   articleCreate: ArticleCreate = new ArticleCreate();
   sections: Section[] = [];
   sectionId: number;
+  hideElement: boolean = true;
+  addtags: string[]  = [];
 
   public editor;
   public editorContent = `<h3>I am Example content</h3>`;
@@ -58,16 +60,6 @@ export class CreateArticleComponent implements OnInit {
     }
     this.articleCreate = this.inputForm.value;
     this.articleCreate.userId = this.userService.getCurrentUser().id;
-
-
-
-    //FIX THIS
-    this.articleCreate.sectionId = 1;
-    this.articleCreate.createdDate = "2018-05-23 17:12:30";
-    ///////////////////////////////////////
-
-
-
     this.articleService.createArticle(this.articleCreate).subscribe(err=>{
       console.log(err);
     });
@@ -78,7 +70,8 @@ export class CreateArticleComponent implements OnInit {
     this.inputForm = this.fb.group({
       title: ['',[Validators.required, Validators.maxLength(15)]],
       description: ['',[Validators.required, Validators.maxLength(15)]],
-      content: ['',[Validators.required, Validators.maxLength(150)]]
+      content: ['',[Validators.required, Validators.maxLength(150)]],
+      sectionId: ['']
     });
   }
 

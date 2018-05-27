@@ -32,6 +32,7 @@ export class ArticleService {
 
   createArticle(article: ArticleCreate) : Observable<any>{
     let url = API_URL + '/addarticle';
+    console.log(article);
     return this.http.post(url, article, {headers: this.headersAuth});
   }
   getSection(id: number){

@@ -9,26 +9,25 @@
     <div class="container">
 
 
-      <form [formGroup]="inputForm" (click)="onSubmit()">
+      <form [formGroup]="inputForm" (submit)="onSubmit()">
         <h3>Заголовок</h3>
-        <input type="text" id="title" formControlName="title" />
+        <input type="text" id="title" class="form-control" formControlName="title" />
         <div class="error" *ngIf="isControlInvalid('title')">
-          <div class="alert alert-danger">FFFFFFFF</div>
+          <div class="alert alert-danger" *ngIf="isControlInvalid('title')">Неверное количество символов</div>
         </div>
-
         <h3>Раздел</h3>
-        <select class="mdb-select" name="opt" formControlName="section" [(value)]="sectionId">
+        <select class="mdb-select" name="opt" formControlName="sectionId" [(value)]="sectionId">
           <option *ngFor="let option of sections" value="{{option.id}}">{{option.heading}}</option>
         </select>
         <h3>Краткое описание</h3>
         <input type="text" id="description" formControlName="description" />
         <div class="error" *ngIf="isControlInvalid('description')">
-          <div class="alert alert-danger">FvvvFFFFF</div>
+          <div class="alert alert-danger">Неверное количество символов</div>
         </div>
         <h3>Содержание</h3>
         <quill-editor  formControlName="content" ></quill-editor>
         <div class="error" *ngIf="isControlInvalid('content')">
-          <div class="alert alert-danger">FvvvFFFFF</div>
+          <div class="alert alert-danger">Неверное количество символов</div>
         </div>
         <button type="submit">Отправить</button>
       </form>
@@ -38,7 +37,7 @@
 
     </div>
 
-    <app-footer></app-footer>
+    <app-footer ></app-footer>
   </body>
 
 </html>

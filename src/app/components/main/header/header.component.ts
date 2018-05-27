@@ -9,6 +9,7 @@ import {ArticleService} from "../../../services/article.service";
 import {API_URL} from '../../../constants/API';
 import {Section} from '../../../models/section';
 import {HttpClient} from '@angular/common/http';
+import {LocalizationComponent} from '../localization/localization.component';
 
 @Component({
   selector: 'app-header',

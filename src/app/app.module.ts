@@ -14,7 +14,7 @@ import { RegistrationFormComponent } from './components/auth/registration-form/r
 import { ArticleComponent } from './components/main/article/article.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserService } from "./services/user.service";
-import { HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthService} from "./services/auth.service";
 import {ArticleService} from './services/article.service';
 import { ListComponent } from './components/main/list/list.component';
@@ -26,8 +26,14 @@ import { SportComponent } from './components/main/sport/sport.component';
 import { PoliticsComponent } from './components/main/politics/politics.component';
 import { PeopleComponent } from './components/main/people/people.component';
 import { TechnologyComponent } from './components/main/technology/technology.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LocalizationComponent } from './components/main/localization/localization.component';
 
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -50,6 +56,7 @@ import { TechnologyComponent } from './components/main/technology/technology.com
     PoliticsComponent,
     PeopleComponent,
     TechnologyComponent,
+    LocalizationComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,14 @@ import { TechnologyComponent } from './components/main/technology/technology.com
     FormsModule,
     ReactiveFormsModule,
     QuillModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [UserService, AuthService, ArticleService],
   bootstrap: [AppComponent]
