@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   writer: boolean = false;
   role: Role = new Role();
   roleReader: Role = new Role();
+  searchString: string;
   public translate: TranslateService;
   constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService,
               private articleService: ArticleService, private http: HttpClient, private localizate: LocalizationService) {
@@ -76,8 +77,16 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.usualRouter.navigate([MainComponent]);
   }
+
   changeLang(lang){
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
+  }
+
+  searchMethod(searchStr) {
+    console.log(searchStr);
+    this.userService.search(searchStr).subscribe(data => {
+      console.log(data);
+    })
   }
 }

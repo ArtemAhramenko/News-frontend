@@ -5,6 +5,7 @@ import {Article} from '../../../models/article';
 import {User} from '../../../models/user';
 import {Role} from '../../../models/role';
 import {UserService} from '../../../services/user.service';
+import {UserDtoAlias} from "../../../models/userDtoId";
 
 @Component({
   selector: 'app-article',
@@ -17,6 +18,7 @@ export class ArticleComponent implements OnInit {
   starsCount: number;
   user: User = new User();
   role: Role = new Role;
+  userDto: UserDtoAlias;
   auth: boolean;
 
   constructor(private router: ActivatedRoute, private articleService: ArticleService, private userService: UserService) {
@@ -50,7 +52,7 @@ export class ArticleComponent implements OnInit {
   getNews(){
     this.articleService.getArticleId(this.articleId).subscribe((data) => {
       this.article = new Article(data);
-      console.log(data);
+      this.userDto = new UserDtoAlias(data);
     }, err => console.log(err));
   }
   setRating(){

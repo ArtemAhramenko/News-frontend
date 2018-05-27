@@ -24,7 +24,7 @@
         <!--<option value="2">by</option>-->
       <!--</select>-->
       <form class="form-inline waves-effect waves-light">
-        <input class="form-control mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
+        <input class="form-control mr-sm-2" [(ngModel)]="searchString" (keyup.enter)="searchMethod(searchString)"  type="text" placeholder="Поиск" aria-label="Search">
       </form>
 
 

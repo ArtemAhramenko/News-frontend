@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
+
 export class CardComponent implements OnInit {
   @Input() article;
   constructor(private articleService: ArticleService) {

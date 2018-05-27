@@ -59,6 +59,7 @@ export class CreateArticleComponent implements OnInit {
     }
     this.articleCreate = this.inputForm.value;
     this.articleCreate.userId = this.userService.getCurrentUser().id;
+    console.log(this.articleCreate.userId)
     this.articleService.createArticle(this.articleCreate).subscribe(err=>{
       console.log(err);
     });
