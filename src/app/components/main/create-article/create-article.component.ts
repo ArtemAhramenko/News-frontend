@@ -63,7 +63,6 @@ export class CreateArticleComponent implements OnInit {
 
     //FIX THIS
     this.articleCreate.sectionId = 1;
-    this.articleCreate.createdDate = "2018-05-23 17:12:30";
     ///////////////////////////////////////
 
 

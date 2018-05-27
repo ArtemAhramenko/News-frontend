@@ -26,7 +26,8 @@ import { SportComponent } from './components/main/sport/sport.component';
 import { PoliticsComponent } from './components/main/politics/politics.component';
 import { PeopleComponent } from './components/main/people/people.component';
 import { TechnologyComponent } from './components/main/technology/technology.component';
-
+import { SelectedUserComponent } from './components/main/selected-user/selected-user.component';
+import {AdminService} from "./services/admin.service";
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { TechnologyComponent } from './components/main/technology/technology.com
     PoliticsComponent,
     PeopleComponent,
     TechnologyComponent,
+    SelectedUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import { TechnologyComponent } from './components/main/technology/technology.com
     QuillModule,
     HttpClientModule
   ],
-  providers: [UserService, AuthService, ArticleService],
+  providers: [UserService, AuthService, ArticleService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

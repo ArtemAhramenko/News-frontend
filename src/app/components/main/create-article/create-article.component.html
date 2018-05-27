@@ -9,7 +9,7 @@
     <div class="container">
 
 
-      <form [formGroup]="inputForm" (click)="onSubmit()">
+      <form [formGroup]="inputForm" (submit)="onSubmit()">
         <h3>Заголовок</h3>
         <input type="text" id="title" formControlName="title" />
         <div class="error" *ngIf="isControlInvalid('title')">

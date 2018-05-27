@@ -1,0 +1,39 @@
+
+<app-header></app-header>
+<form [formGroup]="userForm">
+  <div class="container" >
+    <div class="jumbotron" style="padding-bottom: 5px; padding-left: 37%;">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-6">
+          <img alt="User Pic" src={{selectUser.profileImg}} class="img-circle img-responsive img" height="256" width="256">
+          <fieldset disabled>
+            <p style="text-align: center; font-size: 17px">{{selectUser.alias}}</p>
+          </fieldset>
+        </div>
+      <button type="button" (click)="disableUser()" class="btn btn-primary btn-blue-grey  btn btnChangeUsr categoriesBtn" style="font-size: 16px">Блокировать</button>
+      <button type="button" (click)="deleteUser()" class="btn btn-primary btn-blue-grey  btn btnChangeUsr categoriesBtn" style="font-size: 16px">Удалить</button>
+    </div>
+
+
+    <div class="jumbotron">
+      <div style="text-align: center; margin-bottom: 14px">
+        <button type="button" (click)="changeListArticles()" class="btn btn-primary btn-blue-grey  btn btnChangeUsr categoriesBtn" style="font-size: 16px">Статьи</button>
+        <button type="button" (click)="changeListPeoples()" class="btn btn-primary btn-blue-grey btn btnChangeUsr categoriesBtn" style="font-size: 16px">Пользователи</button>
+      </div>
+      <ul *ngIf="!peoples">
+        <li *ngFor="let person of news" style="font-size:18px; margin-bottom: 5px">
+          <b style="font-size: 22px; margin-bottom: 0px">{{ person.title }}</b>
+          <hr style="margin-top: -2px; margin-bottom: 13px">
+          <button type="button" [routerLink]="['/article',person.id]" class="btn btn-primary btn-blue-grey  btn buttonsView">Посмотреть</button>
+          <button type="button" class="btn btn-primary btn-blue-grey  btn buttonsView">Редактировать</button>
+        </li>
+      </ul>
+      <ul *ngIf="peoples">
+        <li *ngFor="let someUser of allUsers" style="font-size:18px; margin-bottom: 5px">
+          <b style="font-size: 22px; margin-bottom: 0px">{{ someUser.username }}</b>
+          <hr style="margin-top: -2px; margin-bottom: 13px">
+          <button type="button" (click)="profileCheck(someUser.id)" class="btn btn-primary btn-blue-grey  btn buttonsView2">Посмотреть профиль</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

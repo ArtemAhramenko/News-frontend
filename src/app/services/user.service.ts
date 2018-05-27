@@ -2,6 +2,7 @@ import {User} from "../models/user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {API_URL} from "../constants/API";
 import {Injectable} from "@angular/core";
+import {selectUser} from "../models/selectUser";
 
 @Injectable()
 export class UserService {
@@ -20,7 +21,13 @@ export class UserService {
 
   me(id: number) {
     let url = API_URL + '/me' + '/' + id;
+    localStorage.setItem('selectedUserId', JSON.stringify(id));
     return this.http.get(url, {headers: this.headers});
+  }
+
+  selectPeople(id: number) {
+    let url = API_URL + '/selectedUser' + '/' + id;
+    this.http.get(url, {headers: this.headers});
   }
 
   sendChanges(user: User) {
@@ -46,6 +53,16 @@ export class UserService {
     }
   }
 
+  selectedUser(selectedUser: selectUser) {
+    localStorage.setItem('selectedUser', JSON.stringify(selectedUser));
+  }
+
+  getSelectedUser(): selectUser {
+    if (typeof localStorage !== 'undefined') {
+      return JSON.parse(localStorage.getItem('selectedUser'))
+    }
+  }
+
   getCurrentUser(): User {
     if (typeof localStorage !== 'undefined') {
       return JSON.parse(localStorage.getItem('user'))
@@ -53,7 +70,7 @@ export class UserService {
   }
 
   getAllUsers()   {
-    let url = API_URL + '/getAllUsers';
+    let url = API_URL + '/getuser';
     return this.http.get(url, {headers: this.headers});
   }
 
