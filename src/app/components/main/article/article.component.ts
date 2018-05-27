@@ -5,6 +5,8 @@ import {Article} from '../../../models/article';
 import {User} from '../../../models/user';
 import {Role} from '../../../models/role';
 import {UserService} from '../../../services/user.service';
+import {ArticleCreate} from '../../../models/articleCreate';
+import {Rating} from '../../../models/rating';
 
 @Component({
   selector: 'app-article',
@@ -14,6 +16,7 @@ import {UserService} from '../../../services/user.service';
 export class ArticleComponent implements OnInit {
   articleId: String;
   article : Article;
+  rating: Rating = new Rating();
   starsCount: number;
   user: User = new User();
   role: Role = new Role;
@@ -53,7 +56,15 @@ export class ArticleComponent implements OnInit {
       console.log(data);
     }, err => console.log(err));
   }
-  setRating(){
+  getRating(){
+    this.rating.userRating = this.starsCount;
+    this.rating.userId = this.user.id;
+    this.rating.articleId = this.article.id;
     console.log(this.starsCount);
+    console.log(this.rating);
+    this.articleService.addRating(this.rating).subscribe(data => {
+
+    });
   }
+
 }

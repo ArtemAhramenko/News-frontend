@@ -34,10 +34,10 @@
 <!--Grid row-->
   <div class="container">
 
-    <!-- regular rating -->
+    <!-- regular averageRating -->
     <rating [(ngModel)]="starsCount"
             [float]="true"
-            (ngModelChange)="setRating()"
+            (ngModelChange)="getRating()"
     ></rating>
     <br/><br/>
   </div>
