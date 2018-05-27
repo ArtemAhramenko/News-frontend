@@ -5,6 +5,7 @@ import {Injectable} from "@angular/core";
 import {ArticleCreate} from '../models/articleCreate';
 import {Observer} from 'rxjs/Observer';
 import {Observable} from 'rxjs/Observable';
+import {Rating} from '../models/rating';
 
 @Injectable()
 export class ArticleService {
@@ -35,6 +36,14 @@ export class ArticleService {
     console.log(article);
     return this.http.post(url, article, {headers: this.headersAuth});
   }
+
+  addRating(rating: Rating) : Observable<any>{
+    let url = API_URL + '/addrating';
+    console.log(rating);
+    return this.http.post(url, rating, {headers: this.headersAuth});
+  }
+
+
   getSection(id: number){
     let url = API_URL + '/getsection/'+ id;
     return this.http.post(url,  {headers: this.headers});
