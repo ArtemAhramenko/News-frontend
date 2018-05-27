@@ -19,8 +19,6 @@ export class CreateArticleComponent implements OnInit {
   articleCreate: ArticleCreate = new ArticleCreate();
   sections: Section[] = [];
   sectionId: number;
-  hideElement: boolean = true;
-  addtags: string[]  = [];
 
   public editor;
   public editorContent = `<h3>I am Example content</h3>`;
@@ -28,7 +26,8 @@ export class CreateArticleComponent implements OnInit {
     placeholder: "insert content..."
   };
   inputForm: FormGroup;
-  constructor(private fb: FormBuilder, private articleService: ArticleService, private userService: UserService, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private articleService: ArticleService, private userService: UserService,
+              private http: HttpClient) {
 
   }
 

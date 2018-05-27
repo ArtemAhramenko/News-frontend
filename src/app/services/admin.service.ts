@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {API_URL} from "../constants/API";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AdminService {
@@ -12,7 +13,7 @@ export class AdminService {
   });
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private usualRouter: Router) { }
 
   disableUser(id: number) {
     return this.http.post(API_URL + '/disableuser', id, {headers: this.headers});
@@ -20,5 +21,9 @@ export class AdminService {
 
   deleteUser(id: number) {
     return this.http.post(API_URL + '/deleteuser', id, {headers: this.headers});
+  }
+
+  editNews(idNews: number) {
+    return this.http.post(API_URL + '/getarticleid/' + idNews, {headers: this.headers});
   }
 }

@@ -14,7 +14,7 @@ import { RegistrationFormComponent } from './components/auth/registration-form/r
 import { ArticleComponent } from './components/main/article/article.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserService } from "./services/user.service";
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./services/auth.service";
 import {ArticleService} from './services/article.service';
 import { ListComponent } from './components/main/list/list.component';
@@ -29,11 +29,10 @@ import { TechnologyComponent } from './components/main/technology/technology.com
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LocalizationComponent } from './components/main/localization/localization.component';
+import {SelectedUserComponent} from "./components/main/selected-user/selected-user.component";
+import {EditArticleComponent} from "./components/main/edit-article/edit-article.component";
+import {AdminService} from "./services/admin.service";
 
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @NgModule({
   declarations: [
@@ -56,7 +55,8 @@ export function createTranslateLoader(http: HttpClient) {
     PoliticsComponent,
     PeopleComponent,
     TechnologyComponent,
-    LocalizationComponent,
+    SelectedUserComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -64,16 +64,9 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     QuillModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    })
+    HttpClientModule
   ],
-  providers: [UserService, AuthService, ArticleService],
+  providers: [UserService, AuthService, ArticleService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
