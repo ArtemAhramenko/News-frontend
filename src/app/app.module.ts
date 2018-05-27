@@ -14,7 +14,7 @@ import { RegistrationFormComponent } from './components/auth/registration-form/r
 import { ArticleComponent } from './components/main/article/article.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserService } from "./services/user.service";
-import { HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthService} from "./services/auth.service";
 import {ArticleService} from './services/article.service';
 import { ListComponent } from './components/main/list/list.component';
@@ -33,6 +33,10 @@ import {SelectedUserComponent} from "./components/main/selected-user/selected-us
 import {EditArticleComponent} from "./components/main/edit-article/edit-article.component";
 import {AdminService} from "./services/admin.service";
 
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -64,9 +68,17 @@ import {AdminService} from "./services/admin.service";
     FormsModule,
     ReactiveFormsModule,
     QuillModule,
-    HttpClientModule
+    HttpClientModule,
+    RatingModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [UserService, AuthService, ArticleService, AdminService],
+  providers: [UserService, AuthService, ArticleService, LocalizationService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

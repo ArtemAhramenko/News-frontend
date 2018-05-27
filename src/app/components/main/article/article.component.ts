@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ArticleService} from '../../../services/article.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Article} from '../../../models/article';
+import {User} from '../../../models/user';
+import {Role} from '../../../models/role';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-article',
@@ -11,12 +14,27 @@ import {Article} from '../../../models/article';
 export class ArticleComponent implements OnInit {
   articleId: String;
   article : Article;
-  constructor(private router: ActivatedRoute, private articleService: ArticleService) {
+  starsCount: number;
+  user: User = new User();
+  role: Role = new Role;
+  auth: boolean;
+
+  constructor(private router: ActivatedRoute, private articleService: ArticleService, private userService: UserService) {
      this.article = new Article({ section: {}});
   }
 
 
   ngOnInit() {
+    if (this.userService.getCurrentUser() != null) {
+      this.user = this.userService.getCurrentUser();
+      if (this.user.roles !== null) {
+        this.auth = true;
+      }
+    } else {
+      this.role.id = 0;
+      this.role.name = "USER";
+      this.user.roles = [this.role];
+    }
     this.getArticleId();
     this.getNews();
     console.log(this.articleId);
@@ -34,5 +52,8 @@ export class ArticleComponent implements OnInit {
       this.article = new Article(data);
       console.log(data);
     }, err => console.log(err));
+  }
+  setRating(){
+    console.log(this.starsCount);
   }
 }
