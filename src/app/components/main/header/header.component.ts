@@ -9,7 +9,8 @@ import {ArticleService} from "../../../services/article.service";
 import {API_URL} from '../../../constants/API';
 import {Section} from '../../../models/section';
 import {HttpClient} from '@angular/common/http';
-import {LocalizationComponent} from '../localization/localization.component';
+import {TranslateService} from '@ngx-translate/core';
+import {LocalizationService} from '../../../services/localization.service';
 
 @Component({
   selector: 'app-header',
@@ -23,8 +24,11 @@ export class HeaderComponent implements OnInit {
   writer: boolean = false;
   role: Role = new Role();
   roleReader: Role = new Role();
+  public translate: TranslateService;
   constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService,
-              private articleService: ArticleService, private http: HttpClient) { }
+              private articleService: ArticleService, private http: HttpClient, private localizate: LocalizationService) {
+    this.translate = localizate.localize;
+  }
 
   ngOnInit() {
     this.roleReader.name = "WRITER";
@@ -47,6 +51,7 @@ export class HeaderComponent implements OnInit {
         console.log(this.sections);
       }
     );
+
   }
 
   showLoginForm() {
@@ -71,5 +76,8 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.usualRouter.navigate([MainComponent]);
   }
-
+  changeLang(lang){
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+  }
 }

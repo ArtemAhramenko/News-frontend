@@ -28,7 +28,9 @@ import { PeopleComponent } from './components/main/people/people.component';
 import { TechnologyComponent } from './components/main/technology/technology.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { LocalizationComponent } from './components/main/localization/localization.component';
+import {SelectedUserComponent} from './components/main/selected-user/selected-user.component';
+import {LocalizationService} from './services/localization.service';
+import {AdminService} from './services/admin.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -56,7 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     PoliticsComponent,
     PeopleComponent,
     TechnologyComponent,
-    LocalizationComponent,
+    SelectedUserComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [UserService, AuthService, ArticleService],
+  providers: [UserService, AuthService, ArticleService, LocalizationService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
