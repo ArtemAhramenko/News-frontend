@@ -31,12 +31,9 @@ export class SelectedUserComponent implements OnInit {
 
   ngOnInit() {
     this.selectUser = this.userService.getSelectedUser();
+    this.news = this.userService.getSelectedUser().news;
     if (localStorage.getItem("roles").includes("ADMIN")) {
       this.admin = true;
-    }
-    if (this.userService.getCurrentUser() != null) {
-      this.user = this.userService.getUserCred();
-      this.news = this.userService.getUserCred().news;
     }
   }
 
@@ -59,6 +56,7 @@ export class SelectedUserComponent implements OnInit {
       this.userService.selectedUser(data as selectUser);
       console.log(data);
       this.selectUser = this.userService.getSelectedUser();
+      this.news = this.userService.getSelectedUser().news;
       console.log(this.selectUser.alias);
       this.usualRouter.navigate(["selectedUser/"+id]);
     });

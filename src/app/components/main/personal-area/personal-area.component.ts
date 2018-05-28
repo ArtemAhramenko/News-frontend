@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ArticleService} from "../../../services/article.service";
 import {Router} from "@angular/router";
 import {selectUser} from "../../../models/selectUser";
+import {AdminService} from "../../../services/admin.service";
 
 @Component({
   selector: 'app-personal-area',
@@ -24,7 +25,8 @@ export class PersonalAreaComponent implements OnInit {
   allUsers: User[] = [];
   admin = false;
 
-  constructor(private usualRouter: Router, private fb: FormBuilder, private userService: UserService, private articleService: ArticleService) { }
+  constructor(private usualRouter: Router, private fb: FormBuilder, private userService: UserService,
+              private articleService: ArticleService, private adminService: AdminService) { }
 
   ngOnInit() {
     if (localStorage.getItem("roles").includes("ADMIN")) {
@@ -88,5 +90,9 @@ export class PersonalAreaComponent implements OnInit {
       console.log(data);
       this.usualRouter.navigate(["selectedUser/"+id]);
     });
+  }
+
+  editNews(idNews: number) {
+    this.usualRouter.navigate(["editArticle/"+idNews]);
   }
 }

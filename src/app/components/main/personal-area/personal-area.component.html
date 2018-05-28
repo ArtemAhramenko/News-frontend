@@ -107,14 +107,14 @@
             <b style="font-size: 22px; margin-bottom: 0px">{{ person.title }}</b>
             <hr style="margin-top: -2px; margin-bottom: 13px">
             <button type="button" [routerLink]="['/article',person.id]" class="btn btn-primary btn-blue-grey  btn buttonsView">{{'VIEW_ARTICLE' | translate}}</button>
-            <button type="button" class="btn btn-primary btn-blue-grey  btn buttonsView">{{'EDIT' | translate}}</button>
+            <button type="button" (click)="editNews(person.id)" class="btn btn-primary btn-blue-grey  btn buttonsView">{{'EDIT' | translate}}</button>
           </li>
         </ul>
         <ul *ngIf="peoples">
           <li *ngFor="let someUser of allUsers" style="font-size:18px; margin-bottom: 5px">
             <b style="font-size: 22px; margin-bottom: 0px">{{ someUser.username }}</b>
             <hr style="margin-top: -2px; margin-bottom: 13px">
-            <button type="button" (click)="profileCheck(someUser.id)" class="btn btn-primary btn-blue-grey  btn buttonsView2">{{'VIEW_ACCOUNT' | translate}}</button>
+            <button type="button" (click)="profileCheck(someUser.id)" class="btn btn-primary btn-blue-grey  btn buttonsView2">Посмотреть профиль</button>
           </li>
         </ul>
       </div>

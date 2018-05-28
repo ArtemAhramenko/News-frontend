@@ -20,7 +20,7 @@
           <a class="font-weight-bold">{{article.title}}</a>
         </h2>
         <p>Written by
-          <a>Abby Madison</a>, <span ng-non-bindable>{{article.createdDate | date : 'd/M/yy'}}</span></p>
+          <a class="font-weight-bold dark-grey-text" [routerLink]="['/selectedUser/', article.user_id]">{{userDto.user.alias}}</a>, <span ng-non-bindable>{{article.createdDate | date : 'dd/MM/yy HH:mm'}}</span></p>
               </div>
       <!--Post data-->
     </div>

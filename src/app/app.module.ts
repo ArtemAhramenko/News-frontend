@@ -28,11 +28,11 @@ import { PeopleComponent } from './components/main/people/people.component';
 import { TechnologyComponent } from './components/main/technology/technology.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {SelectedUserComponent} from './components/main/selected-user/selected-user.component';
-import {LocalizationService} from './services/localization.service';
-import {AdminService} from './services/admin.service';
-import {RatingModule} from 'ngx-rating'
-
+import {SelectedUserComponent} from "./components/main/selected-user/selected-user.component";
+import {EditArticleComponent} from "./components/main/edit-article/edit-article.component";
+import {AdminService} from "./services/admin.service";
+import {LocalizationService} from "./services/localization.service";
+import {RatingModule} from 'ngx-rating';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,16 +59,17 @@ export function createTranslateLoader(http: HttpClient) {
     PoliticsComponent,
     PeopleComponent,
     TechnologyComponent,
-    SelectedUserComponent
+    SelectedUserComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RatingModule,
     ReactiveFormsModule,
     QuillModule,
     HttpClientModule,
-    RatingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -80,6 +81,4 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [UserService, AuthService, ArticleService, LocalizationService, AdminService],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule { }
