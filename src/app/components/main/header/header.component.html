@@ -9,8 +9,17 @@
     <div  class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
-        <li *ngFor="let h of sections" class="nav-item">
-          <a class="nav-link waves-effect waves-light" [routerLink]="['/sport']">{{ 'heading.'+h.heading | translate}}<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" [routerLink]="['/sport']">{{'heading.' + sections[0].heading | translate}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" [routerLink]="['/politics']">{{ 'heading.' + sections[1].heading | translate}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" [routerLink]="['/people']">{{ 'heading.' + sections[2].heading | translate}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" [routerLink]="['/technology']">{{ 'heading.' + sections[3].heading | translate}}<span class="sr-only">(current)</span></a>
         </li>
 
 
@@ -24,14 +33,14 @@
         <!--<option value="2">by</option>-->
       <!--</select>-->
       <form class="form-inline waves-effect waves-light">
-        <input class="form-control mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
+        <input class="form-control mr-sm-2" type="text" placeholder="{{'SEARCH' | translate}}" aria-label="Search">
       </form>
 
 
 
 
 
-      <button *ngIf="!auth" type="button" (click)="showLoginForm()" class="btn btn-primary btn-sm loginBtn">Вход</button>
+      <button *ngIf="!auth" type="button" (click)="showLoginForm()" class="btn btn-primary btn-sm loginBtn">{{'SIGN_IN' | translate}}</button>
 
 
 
@@ -39,10 +48,10 @@
         <button style="padding-top: 8px; padding-bottom: 8px" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Меню </button>
 
         <div class="dropdown-menu">
-          <a class="dropdown-item" (click)="showUser()">Личный кабинет</a>
-          <a *ngIf="writer" class="dropdown-item" onclick="create()">Написать статью</a>
+          <a class="dropdown-item" (click)="showUser()">{{'ACCOUNT' | translate}}</a>
+          <a *ngIf="writer" class="dropdown-item" onclick="create()">{{'WRITE_ARTICLE' | translate}}</a>
           <hr>
-          <a class="dropdown-item" (click)="exit()" href="/">Выход</a>
+          <a class="dropdown-item" (click)="exit()" href="/">{{'EXIT' | translate}}</a>
         </div>
       </div>
 

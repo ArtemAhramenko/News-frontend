@@ -16,7 +16,7 @@ import {SPORT_ID} from '../../../constants/SectionsId';
 })
 export class SportComponent implements OnInit {
   articles: Article[] = [];
-
+  popularArticles: Article[] = [];
   user: User = new User();
   role: Role = new Role;
   auth: boolean;
@@ -34,12 +34,12 @@ export class SportComponent implements OnInit {
     this.role.name = "USER";
     this.user.roles = [this.role];
   }
-    // this.http.get(API_URL + '/getarticle').subscribe(
-    //   (news: Article[]) => {
-    //     this.articles = news;
-    //     console.log(news);
-    //   }
-    // );
+    this.http.get(API_URL + '/getpopulararticle').subscribe(
+      (news: Article[]) => {
+        this.popularArticles = news;
+        console.log(news);
+      }
+    );
 
   }
 

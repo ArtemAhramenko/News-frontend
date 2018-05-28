@@ -9,7 +9,13 @@
 
 <div class="general">
   <div class="container-left">
-    <app-list></app-list>
+    <h2 class="h2-responsive"> {{ 'POPULAR_ARTICLES' | translate }} </h2>
+    <ul class="list-group list-group-flush">
+      <app-list
+        *ngFor="let i of popularArticles"
+        [popularList]="i"
+      ></app-list>
+    </ul>
   </div>
   <div class="container-mid">
     <div class="row">

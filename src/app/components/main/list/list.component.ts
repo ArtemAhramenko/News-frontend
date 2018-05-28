@@ -10,11 +10,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ListComponent implements OnInit {
   @Input() popularList;
-
   constructor() { }
 
   ngOnInit() {
-
   }
 
 }

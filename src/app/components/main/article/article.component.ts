@@ -63,7 +63,6 @@ export class ArticleComponent implements OnInit {
     console.log(this.starsCount);
     console.log(this.rating);
     this.articleService.addRating(this.rating).subscribe(data => {
-
     });
   }
 

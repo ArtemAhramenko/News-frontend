@@ -29,16 +29,17 @@
     <div class="excerpt mt-5">
       <p>{{article.content}}</p>
     </div>
+    <rating [(ngModel)]="starsCount"
+            [float]="true"
+            (ngModelChange)="getRating()"
+    ></rating>
   </div>
 </div>
 <!--Grid row-->
   <div class="container">
 
     <!-- regular averageRating -->
-    <rating [(ngModel)]="starsCount"
-            [float]="true"
-            (ngModelChange)="getRating()"
-    ></rating>
+
     <br/><br/>
   </div>
 <hr class="mb-5 mt-4">
