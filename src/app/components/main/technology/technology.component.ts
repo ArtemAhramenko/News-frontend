@@ -6,6 +6,7 @@ import {ArticleService} from '../../../services/article.service';
 import {HttpClient} from '@angular/common/http';
 import {TECHNOLOGY_ID} from '../../../constants/SectionsId';
 import {User} from '../../../models/user';
+import {API_URL} from '../../../constants/API';
 
 @Component({
   selector: 'app-technology',
@@ -13,7 +14,7 @@ import {User} from '../../../models/user';
   styleUrls: ['./technology.component.css']
 })
 export class TechnologyComponent implements OnInit {
-
+  popularArticles: Article[] = [];
   articles: Article[] = [];
 
   user: User = new User();
@@ -33,12 +34,12 @@ export class TechnologyComponent implements OnInit {
       this.role.name = "USER";
       this.user.roles = [this.role];
     }
-    // this.http.get(API_URL + '/getarticle').subscribe(
-    //   (news: Article[]) => {
-    //     this.articles = news;
-    //     console.log(news);
-    //   }
-    // );
+    this.http.get(API_URL + '/getpopulararticle').subscribe(
+      (news: Article[]) => {
+        this.popularArticles = news;
+        console.log(news);
+      }
+    );
 
   }
 

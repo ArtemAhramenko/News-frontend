@@ -6,6 +6,7 @@ import {ArticleService} from '../../../services/article.service';
 import {HttpClient} from '@angular/common/http';
 import {PEOPLE_ID} from '../../../constants/SectionsId';
 import {User} from '../../../models/user';
+import {API_URL} from '../../../constants/API';
 
 @Component({
   selector: 'app-people',
@@ -15,7 +16,7 @@ import {User} from '../../../models/user';
 export class PeopleComponent implements OnInit {
 
   articles: Article[] = [];
-
+  popularArticles: Article[] = [];
   user: User = new User();
   role: Role = new Role;
   auth: boolean;
@@ -33,12 +34,13 @@ export class PeopleComponent implements OnInit {
       this.role.name = "USER";
       this.user.roles = [this.role];
     }
-    // this.http.get(API_URL + '/getarticle').subscribe(
-    //   (news: Article[]) => {
-    //     this.articles = news;
-    //     console.log(news);
-    //   }
-    // );
+    this.http.get(API_URL + '/getpopulararticle').subscribe(
+      (news: Article[]) => {
+        this.popularArticles = news;
+        console.log(news);
+      }
+    );
+
 
   }
 
