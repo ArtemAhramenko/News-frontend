@@ -81,7 +81,7 @@ export class UserService {
 
   search(searchString: string) {
     console.log(searchString);
-    return this.http.post(API_URL + '/search', searchString);
+    return this.http.get(API_URL + '/search' + '/' + searchString);
   }
 
 }

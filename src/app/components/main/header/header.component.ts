@@ -11,6 +11,8 @@ import {Section} from '../../../models/section';
 import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {LocalizationService} from '../../../services/localization.service';
+import {SearchRequest} from "../../../models/searchRequest";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
@@ -18,20 +20,27 @@ import {LocalizationService} from '../../../services/localization.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  userForm: FormGroup;
   sections: Section[] = [];
   user: User = new User();
   auth: boolean = false;
   writer: boolean = false;
   role: Role = new Role();
   roleReader: Role = new Role();
-  searchString: string;
+  searchString = "";
+  request: SearchRequest = new SearchRequest();
   public translate: TranslateService;
-  constructor(private usualRouter: Router, private router: ActivatedRoute, private userService: UserService,
+  constructor(private fb: FormBuilder, private usualRouter: Router, private router: ActivatedRoute, private userService: UserService,
               private articleService: ArticleService, private http: HttpClient, private localizate: LocalizationService) {
     this.translate = localizate.localize;
   }
 
   ngOnInit() {
+    this.userForm = this.fb.group({
+      'searchString': ['', [
+        Validators.required
+      ]]
+    })
     this.roleReader.name = "WRITER";
     if (this.userService.getCurrentUser() != null) {
       this.user = this.userService.getCurrentUser();
@@ -67,9 +76,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  create() {
+  forCreate() {
     this.articleService.create().subscribe(data => {
-      this.usualRouter.navigate([API_URL + data]);
+      this.usualRouter.navigate(["create"]);
     });
   }
 
@@ -83,10 +92,8 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem('lang', lang);
   }
 
-  searchMethod(searchStr) {
-    console.log(searchStr);
-    this.userService.search(searchStr).subscribe(data => {
-      console.log(data);
-    })
+  searchMethod(str: string) {
+    console.log(str);
+    this.usualRouter.navigate(["search/"+str]);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AdminService} from "../../../services/admin.service";
 import {Article} from "../../../models/article";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -9,6 +9,7 @@ import {UserService} from "../../../services/user.service";
 import {ArticleService} from "../../../services/article.service";
 import {ArticleCreate} from "../../../models/articleCreate";
 import {HttpClient} from "@angular/common/http";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-edit-article',
@@ -30,7 +31,7 @@ export class EditArticleComponent implements OnInit {
   };
   inputForm: FormGroup;
 
-  constructor(private router: ActivatedRoute, private adminService: AdminService, private fb: FormBuilder, private articleService: ArticleService, private userService: UserService,
+  constructor(private usualRouter: Router, private router: ActivatedRoute, private adminService: AdminService, private fb: FormBuilder, private articleService: ArticleService, private userService: UserService,
               private http: HttpClient) {
 
   }
@@ -44,7 +45,6 @@ export class EditArticleComponent implements OnInit {
       this.articleCreate.content = this.article.content;
       this.articleCreate.description = this.article.description;
       this.articleCreate.title = this.article.title;
-      this.articleCreate.rating = this.article.rating;
       this.articleCreate.userId = this.article.user_id;
       console.log(this.articleCreate.sectionId)
     }, err => console.log(err));
@@ -87,6 +87,11 @@ export class EditArticleComponent implements OnInit {
     });
 
     console.log(this.inputForm.value);
+    this.userService.me(this.articleCreate.userId).subscribe(data => {
+      this.userService.saveUserCred(data as User);
+      console.log(data);
+      this.usualRouter.navigate(["me/"+this.articleCreate.userId]);
+    });
   }
 
   private initForm() {

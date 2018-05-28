@@ -29,6 +29,7 @@ const routes: Routes = [
   {path: 'me/:id', component: PersonalAreaComponent},
   {path: 'selectedUser/:id', component: SelectedUserComponent},
   {path: 'editArticle/:id', component: EditArticleComponent},
+  {path: 'search/:stringSearch', component: MainComponent}
 ];
 
 @NgModule({

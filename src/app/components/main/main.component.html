@@ -18,7 +18,10 @@
       ></app-list>
     </ul>
   </div>
-  <div class="container-mid">
+
+
+  <div class="container-mid" *ngIf="searchActive">
+    <p *ngIf="searchActive" style="text-align: center; font-size: 35px">Новости по запросу "{{stringSearch}}"</p>
     <div class="row">
       <app-card
         *ngFor="let i of articles"
@@ -27,6 +30,18 @@
       </app-card>
     </div>
   </div>
+
+  <div class="container-mid" *ngIf="!searchActive">
+    <div class="row">
+      <app-card
+        *ngFor="let i of articles"
+        [article]="i"
+      >
+      </app-card>
+    </div>
+  </div>
+
+
   <div class="container-right" >
     <app-tag></app-tag>
   </div>

@@ -8,6 +8,8 @@ import {ArticleCreate} from '../../../models/articleCreate';
 import {ArticleService} from '../../../services/article.service';
 import {Section} from '../../../models/section';
 import {UserService} from "../../../services/user.service";
+import {User} from "../../../models/user";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-check',
@@ -26,11 +28,8 @@ export class CreateArticleComponent implements OnInit {
     placeholder: "insert content..."
   };
   inputForm: FormGroup;
-  constructor(private fb: FormBuilder, private articleService: ArticleService, private userService: UserService,
-              private http: HttpClient) {
-
-  }
-
+  constructor(private usualRouter: Router, private fb: FormBuilder, private articleService: ArticleService, private userService: UserService,
+              private http: HttpClient) {}
 
   ngOnInit() {
 
@@ -65,6 +64,11 @@ export class CreateArticleComponent implements OnInit {
     });
 
     console.log(this.inputForm.value);
+    this.userService.me(this.articleCreate.userId).subscribe(data => {
+      this.userService.saveUserCred(data as User);
+      console.log(data);
+      this.usualRouter.navigate(["me/"+this.articleCreate.userId]);
+    });
   }
   private initForm(){
     this.inputForm = this.fb.group({
@@ -73,6 +77,7 @@ export class CreateArticleComponent implements OnInit {
       content: ['',[Validators.required, Validators.maxLength(2000)]],
       sectionId: ['']
     });
+
   }
 
   isControlInvalid(controlTitle: string): boolean {
