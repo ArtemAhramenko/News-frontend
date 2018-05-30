@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   user: User = new User();
   auth: boolean = false;
   writer: boolean = false;
+  admin: boolean = false;
   role: Role = new Role();
   roleReader: Role = new Role();
   searchString = "";
@@ -48,6 +49,9 @@ export class HeaderComponent implements OnInit {
         this.auth = true;
         if (localStorage.getItem("roles").includes("WRITER")) {
           this.writer = true;
+        }
+        if (localStorage.getItem("roles").includes("ADMIN")) {
+          this.admin = true;
         }
       }
     } else {
