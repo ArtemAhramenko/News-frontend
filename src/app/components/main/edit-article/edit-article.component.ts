@@ -90,7 +90,7 @@ export class EditArticleComponent implements OnInit {
     this.userService.me(this.articleCreate.userId).subscribe(data => {
       this.userService.saveUserCred(data as User);
       console.log(data);
-      this.usualRouter.navigate(["me/"+this.articleCreate.userId]);
+      this.usualRouter.navigate(["/"]);
     });
   }
 

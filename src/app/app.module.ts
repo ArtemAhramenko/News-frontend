@@ -7,9 +7,7 @@ import { CardComponent } from './components/main/card/card.component';
 import { LoginFormComponent } from "./components/auth/login-form/login-form.component";
 import { AuthComponent } from './components/auth/auth.component';
 import { MainComponent } from './components/main/main.component';
-import { FooterComponent } from './components/main/footer/footer.component';
 import { PageHeadingComponent } from './components/main/page-heading/page-heading.component';
-import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
 import { RegistrationFormComponent } from './components/auth/registration-form/registration-form.component';
 import { ArticleComponent } from './components/main/article/article.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -46,9 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
     LoginFormComponent,
     AuthComponent,
     MainComponent,
-    FooterComponent,
     PageHeadingComponent,
-    AuthFooterComponent,
     RegistrationFormComponent,
     ArticleComponent,
     ListComponent,
