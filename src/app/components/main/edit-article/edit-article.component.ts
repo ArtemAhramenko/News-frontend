@@ -32,12 +32,10 @@ export class EditArticleComponent implements OnInit {
   inputForm: FormGroup;
 
   constructor(private usualRouter: Router, private router: ActivatedRoute, private adminService: AdminService, private fb: FormBuilder, private articleService: ArticleService, private userService: UserService,
-              private http: HttpClient) {
-
-  }
-
+              private http: HttpClient) {}
 
   ngOnInit() {
+    this.sectionId = 2;
     this.getArticleId();
     this.adminService.editNews(this.articleId).subscribe( data => {
       this.article = new Article(data);
@@ -60,7 +58,6 @@ export class EditArticleComponent implements OnInit {
         console.log(this.sections);
       }
     );
-
   }
 
   getArticleId(){
@@ -82,23 +79,23 @@ export class EditArticleComponent implements OnInit {
     }
     this.articleCreate = this.inputForm.value;
     this.articleCreate.userId = this.userService.getCurrentUser().id;
+    this.articleCreate.sectionId = 2;
+    console.log(this.inputForm.value);
     this.articleService.createArticle(this.articleCreate).subscribe(err => {
       console.log(err);
     });
-
-    console.log(this.inputForm.value);
     this.userService.me(this.articleCreate.userId).subscribe(data => {
       this.userService.saveUserCred(data as User);
       console.log(data);
-      this.usualRouter.navigate(["/"]);
+      this.usualRouter.navigate(["me/"+this.articleCreate.userId]);
     });
   }
 
   private initForm() {
     this.inputForm = this.fb.group({
-      title: ['', [Validators.required, Validators.maxLength(15)]],
-      description: ['', [Validators.required, Validators.maxLength(15)]],
-      content: ['', [Validators.required, Validators.maxLength(150)]],
+      title: ['', [Validators.required, Validators.maxLength(80)]],
+      description: ['', [Validators.required, Validators.maxLength(180)]],
+      content: ['', [Validators.required, Validators.maxLength(4000)]],
       sectionId: ['']
     });
   }

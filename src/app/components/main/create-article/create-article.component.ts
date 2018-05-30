@@ -74,7 +74,7 @@ export class CreateArticleComponent implements OnInit {
     this.inputForm = this.fb.group({
       title: ['',[Validators.required, Validators.maxLength(80)]],
       description: ['',[Validators.required, Validators.maxLength(180)]],
-      content: ['',[Validators.required, Validators.maxLength(2000)]],
+      content: ['',[Validators.required, Validators.maxLength(4000)]],
       sectionId: ['']
     });
 
