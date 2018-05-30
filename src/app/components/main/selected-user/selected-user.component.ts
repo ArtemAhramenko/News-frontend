@@ -78,4 +78,8 @@ export class SelectedUserComponent implements OnInit {
       console.log(data);
     });
   }
+
+  editNews(idNews: number) {
+    this.usualRouter.navigate(["editArticle/"+idNews]);
+  }
 }

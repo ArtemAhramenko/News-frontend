@@ -67,14 +67,14 @@ export class CreateArticleComponent implements OnInit {
     this.userService.me(this.articleCreate.userId).subscribe(data => {
       this.userService.saveUserCred(data as User);
       console.log(data);
-      this.usualRouter.navigate(["me/"+this.articleCreate.userId]);
+      this.usualRouter.navigate(["/"]);
     });
   }
   private initForm(){
     this.inputForm = this.fb.group({
       title: ['',[Validators.required, Validators.maxLength(80)]],
       description: ['',[Validators.required, Validators.maxLength(180)]],
-      content: ['',[Validators.required, Validators.maxLength(2000)]],
+      content: ['',[Validators.required, Validators.maxLength(4000)]],
       sectionId: ['']
     });
 
