@@ -11,5 +11,5 @@ Small website written by AngualrCLI and Java SpringFramework
 ## Run back server
 
 1. Clone https://github.com/ArtemAhramenko/News-backend and open in IDE(InteliJ IDEA, Eclipse)
-2. Create mysql table name "newssitedb", user "root", password "root". Check file application.properties on backend app for change them.
+2. Create mysql table name "newssitedb", user "root", password "root". Check file application.properties on backend app for change it.
 3. Run NewsApplication(backend server).
